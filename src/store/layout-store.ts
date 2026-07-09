@@ -22,21 +22,20 @@ export const useLayoutStore = create<LayoutState>()(
       layouts: {},
       hasHydrated: false,
       getLayout: (slug) => get().layouts[slug],
-      setLayout: (slug, map) =>
-        set((state) => ({ layouts: { ...state.layouts, [slug]: map } })),
+      setLayout: (slug, map) => set((state) => ({ layouts: { ...state.layouts, [slug]: map } })),
       resetLayout: (slug) =>
         set((state) => {
           const next = { ...state.layouts };
           delete next[slug];
           return { layouts: next };
         }),
-      setHasHydrated: (v) => set({ hasHydrated: v }),
+      setHasHydrated: (v) => set({ hasHydrated: v })
     }),
     {
       name: "liquid-weather:layouts",
       onRehydrateStorage: () => (state) => {
         state?.setHasHydrated(true);
-      },
-    },
-  ),
+      }
+    }
+  )
 );

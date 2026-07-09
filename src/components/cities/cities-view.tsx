@@ -1,28 +1,21 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Search, SlidersHorizontal, Star, X } from "lucide-react";
 import { CityCard } from "./city-card";
+import { AddLocationPanel } from "./add-location-panel";
 import { GlassCard } from "@/components/glass/glass-card";
 import { Badge } from "@/components/ui/badge";
 import { Select } from "@/components/ui/select";
 import { useFavoritesStore } from "@/store/favorites-store";
+import { useCustomCitiesStore } from "@/store/custom-cities-store";
 import { describeWeather } from "@/lib/weather-codes";
+import { fetchCitySummaries } from "@/lib/open-meteo";
+import { CONTINENTS } from "@/lib/cities";
 import { cn } from "@/lib/utils";
-import type { CitySummary } from "@/lib/types";
+import type { CitySummary, Continent } from "@/lib/types";
 
-type SortKey =
-  | "favorites"
-  | "name-asc"
-  | "name-desc"
-  | "temp-desc"
-  | "temp-asc"
-  | "humidity-desc"
-  | "humidity-asc"
-  | "wind-desc"
-  | "wind-asc"
-  | "feels-desc"
-  | "feels-asc";
+type SortKey = "favorites" | "name-asc" | "name-desc" | "temp-desc" | "temp-asc" | "humidity-desc" | "humidity-asc" | "wind-desc" | "wind-asc" | "feels-desc" | "feels-asc";
 
 const SORT_OPTIONS: { key: SortKey; label: string }[] = [
   { key: "favorites", label: "Favoritas primero" },
@@ -35,7 +28,7 @@ const SORT_OPTIONS: { key: SortKey; label: string }[] = [
   { key: "wind-desc", label: "Mayor viento" },
   { key: "wind-asc", label: "Menor viento" },
   { key: "feels-desc", label: "Mejor sensación" },
-  { key: "feels-asc", label: "Peor sensación" },
+  { key: "feels-asc", label: "Peor sensación" }
 ];
 
 const CONDITIONS: { key: string; label: string }[] = [
@@ -45,7 +38,7 @@ const CONDITIONS: { key: string; label: string }[] = [
   { key: "drizzle", label: "Llovizna" },
   { key: "rain", label: "Lluvia" },
   { key: "snow", label: "Nieve" },
-  { key: "thunder", label: "Tormenta" },
+  { key: "thunder", label: "Tormenta" }
 ];
 
 export function CitiesView({ summaries }: { summaries: CitySummary[] }) {
@@ -53,51 +46,62 @@ export function CitiesView({ summaries }: { summaries: CitySummary[] }) {
   const [sort, setSort] = useState<SortKey>("favorites");
   const [conditions, setConditions] = useState<string[]>([]);
   const [onlyFavorites, setOnlyFavorites] = useState(false);
+  const [continent, setContinent] = useState<Continent | "all">("all");
+  const [customSummaries, setCustomSummaries] = useState<CitySummary[]>([]);
 
   const favorites = useFavoritesStore((s) => s.favorites);
+  const customCities = useCustomCitiesStore((s) => s.cities);
 
-  const toggleCondition = (key: string) =>
-    setConditions((prev) =>
-      prev.includes(key) ? prev.filter((c) => c !== key) : [...prev, key],
-    );
+  useEffect(() => {
+    if (customCities.length === 0) {
+      setCustomSummaries([]);
+      return;
+    }
+    let cancelled = false;
+    fetchCitySummaries(customCities).then((result) => {
+      if (!cancelled) setCustomSummaries(result);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [customCities]);
+
+  const allSummaries = useMemo(() => [...customSummaries, ...summaries], [customSummaries, summaries]);
+
+  const toggleCondition = (key: string) => setConditions((prev) => (prev.includes(key) ? prev.filter((c) => c !== key) : [...prev, key]));
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
-    let list = summaries.filter((s) => {
+    let list = allSummaries.filter((s) => {
       if (q) {
-        const hay =
-          s.city.name.toLowerCase() +
-          " " +
-          s.city.country.toLowerCase() +
-          " " +
-          (s.city.admin?.toLowerCase() ?? "");
+        const hay = s.city.name.toLowerCase() + " " + s.city.country.toLowerCase() + " " + (s.city.admin?.toLowerCase() ?? "");
         if (!hay.includes(q)) return false;
       }
+      if (continent !== "all" && s.city.continent !== continent) return false;
       if (conditions.length > 0) {
         const group = describeWeather(s.current.weatherCode).group;
         if (!conditions.includes(group)) return false;
       }
-      if (onlyFavorites && !favorites.includes(s.city.slug)) return false;
+      if (onlyFavorites && !s.city.custom && !favorites.includes(s.city.slug)) return false;
       return true;
     });
 
     list = [...list].sort((a, b) => byKey(a, b, sort));
 
-    // Favorites always float to the top unless the user explicitly picked a
-    // different primary ordering that isn't "favorites".
+    // Favorites (and saved custom locations) always float to the top unless
+    // the user explicitly picked a different primary ordering.
     if (sort === "favorites") {
       list.sort((a, b) => {
-        const fa = favorites.includes(a.city.slug) ? 1 : 0;
-        const fb = favorites.includes(b.city.slug) ? 1 : 0;
+        const fa = a.city.custom || favorites.includes(a.city.slug) ? 1 : 0;
+        const fb = b.city.custom || favorites.includes(b.city.slug) ? 1 : 0;
         if (fa !== fb) return fb - fa;
         return a.city.name.localeCompare(b.city.name, "es");
       });
     }
     return list;
-  }, [summaries, search, sort, conditions, onlyFavorites, favorites]);
+  }, [allSummaries, search, sort, conditions, onlyFavorites, continent, favorites]);
 
-  const activeFilters =
-    (search ? 1 : 0) + conditions.length + (onlyFavorites ? 1 : 0);
+  const activeFilters = (search ? 1 : 0) + conditions.length + (onlyFavorites ? 1 : 0) + (continent !== "all" ? 1 : 0);
 
   return (
     <div>
@@ -106,10 +110,7 @@ export function CitiesView({ summaries }: { summaries: CitySummary[] }) {
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
           {/* Search */}
           <div className="relative flex-1">
-            <Search
-              size={18}
-              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground"
-            />
+            <Search size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
             <input
               type="search"
               value={search}
@@ -120,14 +121,10 @@ export function CitiesView({ summaries }: { summaries: CitySummary[] }) {
           </div>
 
           {/* Sort */}
-          <div className="relative flex items-center gap-2">
+          <div className="relative flex flex-wrap items-center gap-2">
             <SlidersHorizontal size={16} className="text-muted-foreground" />
-            <Select
-              options={SORT_OPTIONS.map((o) => ({ value: o.key, label: o.label }))}
-              value={sort}
-              onChange={setSort}
-              label="Ordenar por"
-            />
+            <Select options={[{ value: "all", label: "Todos los continentes" }, ...CONTINENTS.map((c) => ({ value: c, label: c }))]} value={continent} onChange={setContinent} label="Continente" />
+            <Select options={SORT_OPTIONS.map((o) => ({ value: o.key, label: o.label }))} value={sort} onChange={setSort} label="Ordenar por" />
 
             <button
               type="button"
@@ -135,17 +132,14 @@ export function CitiesView({ summaries }: { summaries: CitySummary[] }) {
               aria-pressed={onlyFavorites}
               className={cn(
                 "flex h-11 items-center gap-2 rounded-full border px-4 text-sm font-medium transition-colors",
-                onlyFavorites
-                  ? "border-rose-400/40 bg-rose-500/15 text-rose-300"
-                  : "border-white/10 bg-white/5 text-foreground/80 hover:bg-white/8",
+                onlyFavorites ? "border-rose-400/40 bg-rose-500/15 text-rose-300" : "border-white/10 bg-white/5 text-foreground/80 hover:bg-white/8"
               )}
             >
-              <Star
-                size={15}
-                className={onlyFavorites ? "fill-rose-400" : ""}
-              />
+              <Star size={15} className={onlyFavorites ? "fill-rose-400" : ""} />
               Favoritas
             </button>
+
+            <AddLocationPanel />
           </div>
         </div>
 
@@ -161,9 +155,7 @@ export function CitiesView({ summaries }: { summaries: CitySummary[] }) {
                 aria-pressed={active}
                 className={cn(
                   "rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors",
-                  active
-                    ? "border-primary/40 bg-primary/20 text-primary"
-                    : "border-white/10 bg-white/5 text-foreground/70 hover:bg-white/8",
+                  active ? "border-primary/40 bg-primary/20 text-primary" : "border-white/10 bg-white/5 text-foreground/70 hover:bg-white/8"
                 )}
               >
                 {c.label}
@@ -177,6 +169,7 @@ export function CitiesView({ summaries }: { summaries: CitySummary[] }) {
                 setSearch("");
                 setConditions([]);
                 setOnlyFavorites(false);
+                setContinent("all");
               }}
               className="ml-auto flex items-center gap-1 rounded-full px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground"
             >
@@ -189,8 +182,7 @@ export function CitiesView({ summaries }: { summaries: CitySummary[] }) {
       {/* Results count */}
       <div className="mb-5 flex items-center justify-between">
         <p className="text-sm text-muted-foreground">
-          {filtered.length}{" "}
-          {filtered.length === 1 ? "ciudad" : "ciudades"}
+          {filtered.length} {filtered.length === 1 ? "ciudad" : "ciudades"}
           {activeFilters > 0 && (
             <Badge tone="primary" className="ml-2">
               {activeFilters} {activeFilters === 1 ? "filtro" : "filtros"}
@@ -201,7 +193,14 @@ export function CitiesView({ summaries }: { summaries: CitySummary[] }) {
 
       {/* Grid */}
       {filtered.length === 0 ? (
-        <EmptyState onReset={() => { setSearch(""); setConditions([]); setOnlyFavorites(false); }} />
+        <EmptyState
+          onReset={() => {
+            setSearch("");
+            setConditions([]);
+            setOnlyFavorites(false);
+            setContinent("all");
+          }}
+        />
       ) : (
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((s) => (
@@ -246,15 +245,9 @@ function EmptyState({ onReset }: { onReset: () => void }) {
       <Search size={44} className="text-muted-foreground/40" />
       <div>
         <h3 className="text-lg font-semibold">Sin resultados</h3>
-        <p className="mt-1 text-sm text-muted-foreground">
-          No encontramos ciudades con esos filtros. Prueba a ajustarlos.
-        </p>
+        <p className="mt-1 text-sm text-muted-foreground">No encontramos ciudades con esos filtros. Prueba a ajustarlos.</p>
       </div>
-      <button
-        type="button"
-        onClick={onReset}
-        className="rounded-full bg-white/10 px-5 py-2 text-sm font-medium hover:bg-white/15"
-      >
+      <button type="button" onClick={onReset} className="rounded-full bg-white/10 px-5 py-2 text-sm font-medium hover:bg-white/15">
         Limpiar filtros
       </button>
     </GlassCard>

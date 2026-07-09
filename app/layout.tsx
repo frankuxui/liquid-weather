@@ -8,45 +8,31 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "600", "700", "800"],
   variable: "--font-sans",
-  display: "swap",
+  display: "swap"
 });
 
 export const metadata: Metadata = {
   title: {
     default: "Liquid Weather — El tiempo con estilo Liquid Glass",
-    template: "%s · Liquid Weather",
+    template: "%s · Liquid Weather"
   },
-  description:
-    "Dashboard meteorológico profesional en tiempo real con pronósticos, gráficas y widgets reorganizables. Diseño iOS Liquid Glass, datos de Open-Meteo.",
-  keywords: [
-    "tiempo",
-    "clima",
-    "meteorología",
-    "pronóstico",
-    "weather",
-    "dashboard",
-    "Open-Meteo",
-  ],
+  description: "Dashboard meteorológico profesional en tiempo real con pronósticos, gráficas y widgets reorganizables. Diseño iOS Liquid Glass, datos de Open-Meteo.",
+  keywords: ["tiempo", "clima", "meteorología", "pronóstico", "weather", "dashboard", "Open-Meteo"],
   authors: [{ name: "Liquid Weather" }],
   openGraph: {
     title: "Liquid Weather",
-    description:
-      "El tiempo en tiempo real con un diseño premium inspirado en iOS Liquid Glass.",
-    type: "website",
-  },
+    description: "El tiempo en tiempo real con un diseño premium inspirado en iOS Liquid Glass.",
+    type: "website"
+  }
 };
 
 export const viewport: Viewport = {
   themeColor: "#0b1120",
   width: "device-width",
-  initialScale: 1,
+  initialScale: 1
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={poppins.variable}>
       <body className="font-sans antialiased">

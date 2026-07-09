@@ -12,13 +12,19 @@ export function FavoriteButton({
   slug,
   className,
   size = 20,
+  isActive,
+  onToggle
 }: {
   slug: string;
   className?: string;
   size?: number;
+  /** Override the favorites-store lookup, e.g. to drive a custom-cities store instead. */
+  isActive?: boolean;
+  onToggle?: () => void;
 }) {
-  const isFavorite = useFavoritesStore((s) => s.favorites.includes(slug));
-  const toggle = useFavoritesStore((s) => s.toggle);
+  const favoritesStoreActive = useFavoritesStore((s) => s.favorites.includes(slug));
+  const toggleFavorite = useFavoritesStore((s) => s.toggle);
+  const isFavorite = isActive ?? favoritesStoreActive;
 
   const [burstKey, setBurstKey] = useState(0);
   const wasFavorite = useRef(isFavorite);
@@ -36,23 +42,24 @@ export function FavoriteButton({
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
-        toggle(slug);
+        if (onToggle) {
+          onToggle();
+        } else {
+          toggleFavorite(slug);
+        }
       }}
       aria-pressed={isFavorite}
       aria-label={isFavorite ? "Quitar de favoritos" : "Añadir a favoritos"}
       className={cn(
         "group/fav relative grid place-items-center rounded-full p-2 transition-colors duration-300",
         "hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-        className,
+        className
       )}
     >
       {/* Radial spark burst, played once whenever a city becomes a favorite */}
       <AnimatePresence>
         {burstKey > 0 && (
-          <motion.span
-            key={burstKey}
-            className="pointer-events-none absolute inset-0"
-          >
+          <motion.span key={burstKey} className="pointer-events-none absolute inset-0">
             {BURST_ANGLES.map((angle) => {
               const rad = (angle * Math.PI) / 180;
               return (
@@ -64,7 +71,7 @@ export function FavoriteButton({
                     opacity: 0,
                     x: `calc(-50% + ${Math.cos(rad) * 26}px)`,
                     y: `calc(-50% + ${Math.sin(rad) * 26}px)`,
-                    scale: 0,
+                    scale: 0
                   }}
                   transition={{ duration: 0.55, ease: "easeOut" }}
                 />
@@ -85,12 +92,7 @@ export function FavoriteButton({
         <Heart
           size={size}
           strokeWidth={2}
-          className={cn(
-            "transition-colors duration-300",
-            isFavorite
-              ? "fill-rose-500 text-rose-500 drop-shadow-[0_0_8px_rgba(244,63,94,0.6)]"
-              : "text-foreground/60 group-hover/fav:text-rose-400",
-          )}
+          className={cn("transition-colors duration-300", isFavorite ? "fill-rose-500 text-rose-500 drop-shadow-[0_0_8px_rgba(244,63,94,0.6)]" : "text-foreground/60 group-hover/fav:text-rose-400")}
         />
       </motion.span>
     </button>

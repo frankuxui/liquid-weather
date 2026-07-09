@@ -1,19 +1,23 @@
+"use client";
+
 import Link from "next/link";
 import { Droplets, Wind, Thermometer, MapPin } from "lucide-react";
 import { GlassCard } from "@/components/glass/glass-card";
 import { WeatherIcon } from "@/components/weather/weather-icon";
 import { FavoriteButton } from "@/components/weather/favorite-button";
 import { describeWeather, weatherGradient } from "@/lib/weather-codes";
-import { flagEmoji } from "@/lib/cities";
+import { cityHref, flagEmoji } from "@/lib/cities";
+import { useCustomCitiesStore } from "@/store/custom-cities-store";
 import type { CitySummary } from "@/lib/types";
 
 export function CityCard({ summary }: { summary: CitySummary }) {
   const { city, current, tempMax, tempMin } = summary;
   const desc = describeWeather(current.weatherCode);
+  const removeCustomCity = useCustomCitiesStore((s) => s.remove);
 
   return (
     <GlassCard hover as="article" className="group animate-fade-in">
-      <Link href={`/city/${city.slug}`} className="block p-5">
+      <Link href={cityHref(city)} className="block p-5">
         {/* condition-tinted glow */}
         <div
           aria-hidden
@@ -31,30 +35,22 @@ export function CityCard({ summary }: { summary: CitySummary }) {
               <MapPin size={11} /> {city.country}
             </p>
           </div>
-          <FavoriteButton slug={city.slug} />
+          {city.custom ? <FavoriteButton slug={city.slug} isActive onToggle={() => removeCustomCity(city.slug)} /> : <FavoriteButton slug={city.slug} />}
         </div>
 
         <div className="relative mt-4 flex items-center justify-between">
           <div>
-            <p className="text-5xl font-light tracking-tighter">
-              {Math.round(current.temperature)}°
-            </p>
+            <p className="text-5xl font-light tracking-tighter">{Math.round(current.temperature)}°</p>
             <p className="text-sm text-muted-foreground">{desc.label}</p>
           </div>
-          <WeatherIcon
-            code={current.weatherCode}
-            isDay={current.isDay}
-            className="h-16 w-16 text-primary/90"
-          />
+          <WeatherIcon code={current.weatherCode} isDay={current.isDay} className="h-16 w-16 text-primary/90" />
         </div>
 
         <div className="relative mt-4 flex items-center gap-1.5 text-sm">
           <span className="font-medium text-rose-300">{tempMax}°</span>
           <span className="text-muted-foreground">/</span>
           <span className="font-medium text-sky-300">{tempMin}°</span>
-          <span className="ml-auto text-xs text-muted-foreground">
-            Sensación {Math.round(current.apparentTemperature)}°
-          </span>
+          <span className="ml-auto text-xs text-muted-foreground">Sensación {Math.round(current.apparentTemperature)}°</span>
         </div>
 
         <div className="relative mt-4 grid grid-cols-3 gap-2 border-t border-white/10 pt-4 text-center">
@@ -67,15 +63,7 @@ export function CityCard({ summary }: { summary: CitySummary }) {
   );
 }
 
-function Metric({
-  icon,
-  value,
-  label,
-}: {
-  icon: React.ReactNode;
-  value: string;
-  label: string;
-}) {
+function Metric({ icon, value, label }: { icon: React.ReactNode; value: string; label: string }) {
   return (
     <div className="flex flex-col items-center gap-1">
       <span className="text-primary/80">{icon}</span>

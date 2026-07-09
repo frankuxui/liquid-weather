@@ -1,15 +1,6 @@
 "use client";
 
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Cell,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { AXIS_STYLE, GRID_COLOR, GlassTooltip } from "./chart-primitives";
 import { formatHour } from "@/lib/utils";
 import type { HourlyForecast } from "@/lib/types";
@@ -17,7 +8,7 @@ import type { HourlyForecast } from "@/lib/types";
 export function PrecipitationChart({ hourly }: { hourly: HourlyForecast[] }) {
   const data = hourly.map((h) => ({
     hora: formatHour(h.time),
-    Probabilidad: Math.round(h.precipitationProbability),
+    Probabilidad: Math.round(h.precipitationProbability)
   }));
 
   return (
@@ -29,10 +20,7 @@ export function PrecipitationChart({ hourly }: { hourly: HourlyForecast[] }) {
         <Tooltip content={<GlassTooltip unit="%" />} cursor={{ fill: "hsl(199 89% 58% / 0.08)" }} />
         <Bar dataKey="Probabilidad" radius={[6, 6, 0, 0]} maxBarSize={22}>
           {data.map((d, i) => (
-            <Cell
-              key={i}
-              fill={`hsl(199 89% ${45 + (d.Probabilidad / 100) * 25}% / ${0.4 + (d.Probabilidad / 100) * 0.6})`}
-            />
+            <Cell key={i} fill={`hsl(199 89% ${45 + (d.Probabilidad / 100) * 25}% / ${0.4 + (d.Probabilidad / 100) * 0.6})`} />
           ))}
         </Bar>
       </BarChart>

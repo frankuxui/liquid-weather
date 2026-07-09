@@ -9,7 +9,7 @@ export function formatHour(iso: string, timezone?: string): string {
   return new Date(iso).toLocaleTimeString("es-ES", {
     hour: "2-digit",
     minute: "2-digit",
-    timeZone: timezone,
+    timeZone: timezone
   });
 }
 
@@ -20,7 +20,7 @@ export function formatWeekday(iso: string): string {
 export function formatDayMonth(iso: string): string {
   return new Date(iso).toLocaleDateString("es-ES", {
     day: "2-digit",
-    month: "short",
+    month: "short"
   });
 }
 

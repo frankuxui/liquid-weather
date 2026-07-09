@@ -14,7 +14,7 @@ export function getMoonInfo(date: Date = new Date()): MoonInfo {
   if (phase < 0) phase += 1;
 
   // Illuminated fraction (0 new -> 1 full -> 0 new)
-  const illumination = Math.round((1 - Math.cos(phase * 2 * Math.PI)) / 2 * 100);
+  const illumination = Math.round(((1 - Math.cos(phase * 2 * Math.PI)) / 2) * 100);
 
   const { phaseName, emoji } = classifyPhase(phase);
   return { phase, phaseName, illumination, emoji };

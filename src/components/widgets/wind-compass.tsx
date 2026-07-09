@@ -11,14 +11,7 @@ export function WindCompass({ direction }: { direction: number }) {
           const x = 50 + Math.cos(angle) * 38;
           const y = 50 + Math.sin(angle) * 38;
           return (
-            <text
-              key={dir}
-              x={x}
-              y={y + 3}
-              textAnchor="middle"
-              className="fill-muted-foreground"
-              fontSize="9"
-            >
+            <text key={dir} x={x} y={y + 3} textAnchor="middle" className="fill-muted-foreground" fontSize="9">
               {dir}
             </text>
           );
@@ -30,9 +23,7 @@ export function WindCompass({ direction }: { direction: number }) {
         <circle cx="50" cy="50" r="3" fill="hsl(210 40% 98%)" />
       </svg>
       <div className="pointer-events-none absolute inset-0 grid place-items-center">
-        <span className="mt-8 rounded-full bg-black/30 px-2 py-0.5 text-[10px] font-semibold backdrop-blur-sm">
-          {windDirectionLabel(direction)}
-        </span>
+        <span className="mt-8 rounded-full bg-black/30 px-2 py-0.5 text-[10px] font-semibold backdrop-blur-sm">{windDirectionLabel(direction)}</span>
       </div>
     </div>
   );

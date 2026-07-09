@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  Area,
-  AreaChart,
-  CartesianGrid,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { AXIS_STYLE, GRID_COLOR, GlassTooltip } from "./chart-primitives";
 import { formatHour } from "@/lib/utils";
 import type { HourlyForecast } from "@/lib/types";
@@ -17,7 +9,7 @@ export function TemperatureChart({ hourly }: { hourly: HourlyForecast[] }) {
   const data = hourly.map((h) => ({
     hora: formatHour(h.time),
     Temperatura: Math.round(h.temperature),
-    Sensación: Math.round(h.apparentTemperature),
+    Sensación: Math.round(h.apparentTemperature)
   }));
 
   return (
@@ -37,20 +29,8 @@ export function TemperatureChart({ hourly }: { hourly: HourlyForecast[] }) {
         <XAxis dataKey="hora" tick={AXIS_STYLE} tickLine={false} axisLine={false} interval={3} />
         <YAxis tick={AXIS_STYLE} tickLine={false} axisLine={false} width={40} unit="°" />
         <Tooltip content={<GlassTooltip unit="°" />} />
-        <Area
-          type="monotone"
-          dataKey="Sensación"
-          stroke="hsl(250 84% 72%)"
-          strokeWidth={2}
-          fill="url(#feelsGrad)"
-        />
-        <Area
-          type="monotone"
-          dataKey="Temperatura"
-          stroke="hsl(199 89% 62%)"
-          strokeWidth={2.5}
-          fill="url(#tempGrad)"
-        />
+        <Area type="monotone" dataKey="Sensación" stroke="hsl(250 84% 72%)" strokeWidth={2} fill="url(#feelsGrad)" />
+        <Area type="monotone" dataKey="Temperatura" stroke="hsl(199 89% 62%)" strokeWidth={2.5} fill="url(#tempGrad)" />
       </AreaChart>
     </ResponsiveContainer>
   );

@@ -1,9 +1,4 @@
-import {
-  Droplets,
-  Wind,
-  Thermometer,
-  Sunrise,
-} from "lucide-react";
+import { Droplets, Wind, Thermometer, Sunrise } from "lucide-react";
 import { GlassCard } from "@/components/glass/glass-card";
 import { WeatherIcon } from "@/components/weather/weather-icon";
 
@@ -14,7 +9,7 @@ import { WeatherIcon } from "@/components/weather/weather-icon";
 export function HeroPreview() {
   return (
     <div className="relative mx-auto w-full max-w-sm">
-      <div className="absolute -inset-6 -z-10 animate-float rounded-[3rem] bg-gradient-to-br from-primary/30 to-accent/30 blur-3xl" />
+      <div className="absolute -inset-6 -z-10 animate-float rounded-[3rem] bg-linear-to-br from-primary/30 to-accent/30 blur-3xl" />
 
       <GlassCard strong className="p-7">
         <div className="flex items-start justify-between">
@@ -27,12 +22,8 @@ export function HeroPreview() {
         </div>
 
         <div className="my-6 flex items-end gap-2">
-          <span className="text-7xl font-light leading-none tracking-tighter">
-            24°
-          </span>
-          <span className="mb-2 text-sm text-muted-foreground">
-            Sensación 26°
-          </span>
+          <span className="text-7xl font-light leading-none tracking-tighter">24°</span>
+          <span className="mb-2 text-sm text-muted-foreground">Sensación 26°</span>
         </div>
 
         <div className="grid grid-cols-2 gap-3">
@@ -40,12 +31,9 @@ export function HeroPreview() {
             { icon: Droplets, label: "Humedad", value: "62%" },
             { icon: Wind, label: "Viento", value: "12 km/h" },
             { icon: Thermometer, label: "Presión", value: "1014 hPa" },
-            { icon: Sunrise, label: "Amanecer", value: "07:14" },
+            { icon: Sunrise, label: "Amanecer", value: "07:14" }
           ].map(({ icon: Icon, label, value }) => (
-            <div
-              key={label}
-              className="flex items-center gap-2.5 rounded-2xl bg-white/5 px-3 py-2.5"
-            >
+            <div key={label} className="flex items-center gap-2.5 rounded-2xl bg-white/5 px-3 py-2.5">
               <Icon size={18} className="text-primary" />
               <div className="leading-tight">
                 <p className="text-[11px] text-muted-foreground">{label}</p>

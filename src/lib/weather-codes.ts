@@ -39,13 +39,13 @@ const CODES: Record<number, WeatherDescriptor> = {
   86: { label: "Chubascos de nieve intensos", icon: "CloudSnow", group: "snow" },
   95: { label: "Tormenta", icon: "CloudLightning", group: "thunder" },
   96: { label: "Tormenta con granizo ligero", icon: "CloudLightning", group: "thunder" },
-  99: { label: "Tormenta con granizo intenso", icon: "CloudLightning", group: "thunder" },
+  99: { label: "Tormenta con granizo intenso", icon: "CloudLightning", group: "thunder" }
 };
 
 const UNKNOWN: WeatherDescriptor = {
   label: "Desconocido",
   icon: "CloudOff",
-  group: "clouds",
+  group: "clouds"
 };
 
 export function describeWeather(code: number): WeatherDescriptor {

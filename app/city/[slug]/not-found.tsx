@@ -10,10 +10,7 @@ export default function CityNotFound() {
         <MapPinOff size={48} className="text-muted-foreground/50" />
         <div>
           <h1 className="text-2xl font-semibold">Ciudad no encontrada</h1>
-          <p className="mt-2 text-muted-foreground">
-            No tenemos datos meteorológicos para esta ubicación. Prueba a
-            elegir otra desde el listado.
-          </p>
+          <p className="mt-2 text-muted-foreground">No tenemos datos meteorológicos para esta ubicación. Prueba a elegir otra desde el listado.</p>
         </div>
         <Button asChild>
           <Link href="/cities">Ver ciudades</Link>

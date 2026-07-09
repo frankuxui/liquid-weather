@@ -19,10 +19,7 @@ export function WidgetBoard({ weather }: { weather: CityWeather }) {
   const [resetKey, setResetKey] = useState(0);
 
   const slotIds = useMemo(() => WIDGETS.map((_, i) => `slot-${i}`), []);
-  const defaultMap = useMemo(
-    () => Object.fromEntries(WIDGETS.map((w, i) => [`slot-${i}`, w.id])),
-    [],
-  );
+  const defaultMap = useMemo(() => Object.fromEntries(WIDGETS.map((w, i) => [`slot-${i}`, w.id])), []);
 
   // Read the saved arrangement imperatively so store updates don't fight Swapy.
   const slotItemMap = useMemo(() => {
@@ -52,14 +49,13 @@ export function WidgetBoard({ weather }: { weather: CityWeather }) {
     if (!containerRef.current) return;
     const swapy = createSwapy(containerRef.current, {
       animation: "dynamic",
-      autoScrollOnDrag: true,
+      autoScrollOnDrag: true
     });
     swapy.onSwap((event) => {
       useLayoutStore.getState().setLayout(slug, event.newSlotItemMap.asObject);
     });
     swapyRef.current = swapy;
     return () => swapy.destroy();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug, resetKey]);
 
   const handleReset = () => {
@@ -82,16 +78,9 @@ export function WidgetBoard({ weather }: { weather: CityWeather }) {
           <RotateCcw size={13} /> Restablecer orden
         </button>
       </div>
-      <p className="mb-4 text-xs text-muted-foreground">
-        Arrastra los widgets para reorganizarlos. Tu disposición se guarda
-        automáticamente.
-      </p>
+      <p className="mb-4 text-xs text-muted-foreground">Arrastra los widgets para reorganizarlos. Tu disposición se guarda automáticamente.</p>
 
-      <div
-        ref={containerRef}
-        key={resetKey}
-        className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"
-      >
+      <div ref={containerRef} key={resetKey} className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
         {slotIds.map((slotId) => {
           const itemId = slotItemMap[slotId];
           const widget = WIDGET_MAP[itemId];

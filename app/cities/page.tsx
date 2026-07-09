@@ -10,8 +10,7 @@ import { fetchCitySummaries } from "@/lib/open-meteo";
 
 export const metadata: Metadata = {
   title: "Ciudades",
-  description:
-    "Explora el tiempo en tiempo real de decenas de ciudades. Filtra y ordena por temperatura, humedad, viento, condición o favoritas.",
+  description: "Explora el tiempo en tiempo real de decenas de ciudades. Filtra y ordena por temperatura, humedad, viento, condición o favoritas."
 };
 
 // Rendered on demand so the dashboard reflects live weather without requiring
@@ -27,26 +26,16 @@ export default async function CitiesPage() {
         <Badge tone="primary" className="mb-3">
           Dashboard
         </Badge>
-        <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">
-          El tiempo en tus ciudades
-        </h1>
-        <p className="mt-3 max-w-xl text-muted-foreground">
-          Datos en tiempo real de {CITIES.length} ciudades. Filtra y ordena para
-          encontrar exactamente lo que buscas.
-        </p>
+        <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">El tiempo en tus ciudades</h1>
+        <p className="mt-3 max-w-xl text-muted-foreground">Datos en tiempo real de {CITIES.length} ciudades. Filtra y ordena para encontrar exactamente lo que buscas.</p>
       </header>
 
       {summaries.length === 0 ? (
         <GlassCard className="flex flex-col items-center gap-4 py-20 text-center">
           <AlertTriangle size={44} className="text-amber-400/70" />
           <div>
-            <h2 className="text-lg font-semibold">
-              No pudimos cargar los datos
-            </h2>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Hubo un problema al contactar con el servicio meteorológico.
-              Inténtalo de nuevo en unos instantes.
-            </p>
+            <h2 className="text-lg font-semibold">No pudimos cargar los datos</h2>
+            <p className="mt-1 text-sm text-muted-foreground">Hubo un problema al contactar con el servicio meteorológico. Inténtalo de nuevo en unos instantes.</p>
           </div>
           <Button asChild variant="glass">
             <Link href="/cities">Reintentar</Link>

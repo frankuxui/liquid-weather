@@ -16,7 +16,7 @@ Construido con **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**,
 - **Dashboard de ciudades** con tarjetas resumidas y **filtros/ordenación combinables**:
   nombre, temperatura, humedad, viento, sensación térmica, condición y favoritas.
   Los resultados se actualizan al instante.
-- **Detalle por ciudad** (ruta dinámica por *slug*) con un panel completo:
+- **Detalle por ciudad** (ruta dinámica por _slug_) con un panel completo:
   temperatura, máx/mín, sensación, humedad, presión, viento y dirección, índice UV,
   probabilidad de lluvia, precipitaciones, visibilidad, nubosidad, punto de rocío,
   amanecer/atardecer, calidad del aire y fase lunar.
@@ -71,12 +71,12 @@ npm run dev      # http://localhost:3000
 
 Scripts disponibles:
 
-| Script          | Descripción                        |
-| --------------- | ---------------------------------- |
-| `npm run dev`   | Servidor de desarrollo             |
-| `npm run build` | Build de producción                |
-| `npm start`     | Sirve el build de producción       |
-| `npm run lint`  | Linter                             |
+| Script          | Descripción                  |
+| --------------- | ---------------------------- |
+| `npm run dev`   | Servidor de desarrollo       |
+| `npm run build` | Build de producción          |
+| `npm start`     | Sirve el build de producción |
+| `npm run lint`  | Linter                       |
 
 > **Nota de red:** las páginas de datos (`/cities` y `/city/[slug]`) se renderizan
 > bajo demanda y consultan Open-Meteo en tiempo de petición. Necesitan salida a

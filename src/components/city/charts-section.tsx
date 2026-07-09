@@ -15,7 +15,7 @@ type Tab = "temp" | "rain" | "wind";
 const TABS: { key: Tab; label: string; icon: React.ReactNode }[] = [
   { key: "temp", label: "Temperatura", icon: <Thermometer size={15} /> },
   { key: "rain", label: "Lluvia", icon: <Umbrella size={15} /> },
-  { key: "wind", label: "Viento", icon: <Wind size={15} /> },
+  { key: "wind", label: "Viento", icon: <Wind size={15} /> }
 ];
 
 export function ChartsSection({ weather }: { weather: CityWeather }) {
@@ -34,9 +34,7 @@ export function ChartsSection({ weather }: { weather: CityWeather }) {
                 onClick={() => setTab(t.key)}
                 className={cn(
                   "flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors",
-                  tab === t.key
-                    ? "bg-white/12 text-foreground"
-                    : "text-muted-foreground hover:text-foreground",
+                  tab === t.key ? "bg-white/12 text-foreground" : "text-muted-foreground hover:text-foreground"
                 )}
               >
                 {t.icon}

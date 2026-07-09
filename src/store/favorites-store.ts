@@ -19,19 +19,17 @@ export const useFavoritesStore = create<FavoritesState>()(
       hasHydrated: false,
       toggle: (slug) =>
         set((state) => ({
-          favorites: state.favorites.includes(slug)
-            ? state.favorites.filter((s) => s !== slug)
-            : [...state.favorites, slug],
+          favorites: state.favorites.includes(slug) ? state.favorites.filter((s) => s !== slug) : [...state.favorites, slug]
         })),
       isFavorite: (slug) => get().favorites.includes(slug),
       clear: () => set({ favorites: [] }),
-      setHasHydrated: (v) => set({ hasHydrated: v }),
+      setHasHydrated: (v) => set({ hasHydrated: v })
     }),
     {
       name: "liquid-weather:favorites",
       onRehydrateStorage: () => (state) => {
         state?.setHasHydrated(true);
-      },
-    },
-  ),
+      }
+    }
+  )
 );

@@ -1,9 +1,26 @@
+export type Continent = "Europa" | "América del Norte" | "América Central y Caribe" | "América del Sur" | "Asia" | "África" | "Oceanía";
+
 export interface City {
   slug: string;
   name: string;
   country: string;
   countryCode: string;
   admin?: string;
+  latitude: number;
+  longitude: number;
+  timezone: string;
+  continent: Continent;
+  /** True for user-added locations (search or manual coordinates), not part of the curated catalogue. */
+  custom?: boolean;
+}
+
+/** One match from the Open-Meteo geocoding search. */
+export interface GeocodingResult {
+  id: number;
+  name: string;
+  country: string;
+  countryCode: string;
+  admin1?: string;
   latitude: number;
   longitude: number;
   timezone: string;
