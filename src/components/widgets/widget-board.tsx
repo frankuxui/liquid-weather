@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createSwapy, type Swapy } from "swapy";
-import { RotateCcw, Move } from "lucide-react";
+import { RotateCcw } from "lucide-react";
 import { WIDGETS, WIDGET_MAP } from "./registry";
 import { useLayoutStore } from "@/store/layout-store";
 import type { CityWeather } from "@/lib/types";
@@ -66,10 +66,10 @@ export function WidgetBoard({ weather }: { weather: CityWeather }) {
   return (
     <section>
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="flex items-center gap-2 text-lg font-semibold">
-          <Move size={18} className="text-primary" />
-          Panel de widgets
-        </h2>
+        <div className="flex-1 flex flex-col gap-1">
+          <h2 className="flex items-center gap-2 text-lg font-semibold">Panel de widgets</h2>
+          <p className="mb-4">Arrastra los widgets para reorganizarlos. Tu disposición se guarda automáticamente.</p>
+        </div>
         <button
           type="button"
           onClick={handleReset}
@@ -78,7 +78,6 @@ export function WidgetBoard({ weather }: { weather: CityWeather }) {
           <RotateCcw size={13} /> Restablecer orden
         </button>
       </div>
-      <p className="mb-4 text-xs text-muted-foreground">Arrastra los widgets para reorganizarlos. Tu disposición se guarda automáticamente.</p>
 
       <div ref={containerRef} key={resetKey} className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
         {slotIds.map((slotId) => {

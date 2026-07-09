@@ -14,6 +14,7 @@ import { fetchCitySummaries } from "@/lib/open-meteo";
 import { CONTINENTS } from "@/lib/cities";
 import { cn } from "@/lib/utils";
 import type { CitySummary, Continent } from "@/lib/types";
+import { SearchInput } from "../ui/search-input";
 
 type SortKey = "favorites" | "name-asc" | "name-desc" | "temp-desc" | "temp-asc" | "humidity-desc" | "humidity-asc" | "wind-desc" | "wind-asc" | "feels-desc" | "feels-asc";
 
@@ -108,17 +109,7 @@ export function CitiesView({ summaries }: { summaries: CitySummary[] }) {
       {/* Controls */}
       <GlassCard className="mb-8 p-4 sm:p-5">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
-          {/* Search */}
-          <div className="relative flex-1">
-            <Search size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
-            <input
-              type="search"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Buscar ciudad o país…"
-              className="h-11 w-full rounded-full border border-white/10 bg-white/5 pl-11 pr-4 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-primary/50 focus:bg-white/8"
-            />
-          </div>
+          <SearchInput value={search} onValueChange={setSearch} placeholder="Buscar ciudad o país…" className="flex-1" visibleIconSearch onClear={() => setSearch("")} />
 
           {/* Sort */}
           <div className="relative flex flex-wrap items-center gap-2">

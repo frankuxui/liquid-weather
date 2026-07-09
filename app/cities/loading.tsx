@@ -3,7 +3,7 @@ import { GlassCard } from "@/components/glass/glass-card";
 
 export default function CitiesLoading() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12">
+    <div className="mx-auto max-w-7xl px-10 py-12">
       <Skeleton className="mb-3 h-6 w-24 rounded-full" />
       <Skeleton className="h-12 w-96 max-w-full" />
       <Skeleton className="mt-3 h-5 w-72 max-w-full" />

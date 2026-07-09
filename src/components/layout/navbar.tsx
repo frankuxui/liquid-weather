@@ -59,7 +59,7 @@ export function Navbar() {
               aria-controls="mobile-navigation"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="size-12" viewBox="0 0 24 24">
-                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.6" d="M9.41 9.66H9.4m5.2 0h-.01m-5.28 4.7H9.3m5.3 0h-.01"></path>
+                <path fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="2.6" d="M9.41 9.66H9.4m5.2 0h-.01m-5.28 4.7H9.3m5.3 0h-.01"></path>
               </svg>
             </button>
           </div>

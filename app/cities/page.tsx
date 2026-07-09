@@ -21,7 +21,7 @@ export default async function CitiesPage() {
   const summaries = await fetchCitySummaries(CITIES);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12">
+    <div className="mx-auto max-w-7xl px-10 py-12">
       <header className="mb-8 animate-fade-in">
         <Badge tone="primary" className="mb-3">
           Dashboard

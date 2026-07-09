@@ -170,7 +170,7 @@ export default function HomePage() {
       {/* CTA */}
       <section className="py-16">
         <GlassCard strong className="relative overflow-hidden px-8 py-16 text-center">
-          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/20 via-transparent to-accent/20" />
+          <div className="absolute inset-0 -z-10 bg-linear-to-br from-primary/20 via-transparent to-accent/20" />
           <h2 className="mx-auto max-w-xl text-balance text-3xl font-semibold tracking-tight md:text-4xl">¿Listo para ver el tiempo como nunca antes?</h2>
           <p className="mx-auto mt-4 max-w-md text-muted-foreground">Empieza ahora, sin registros ni claves de API. Solo tú y el clima, con un diseño que enamora.</p>
           <Button asChild size="lg" className="mt-8">
