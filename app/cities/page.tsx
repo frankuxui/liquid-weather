@@ -7,10 +7,28 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { CITIES } from "@/lib/cities";
 import { fetchCitySummaries } from "@/lib/open-meteo";
+import { OG_IMAGE, SITE_NAME } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Ciudades",
-  description: "Explora el tiempo en tiempo real de decenas de ciudades. Filtra y ordena por temperatura, humedad, viento, condición o favoritas."
+  title: "Tiempo por ciudades",
+  description: "Explora el tiempo actual de ciudades de todo el mundo. Filtra por temperatura, humedad, viento, condición meteorológica y favoritas.",
+  alternates: {
+    canonical: "/cities"
+  },
+  openGraph: {
+    title: "Tiempo por ciudades | Liquid Weather",
+    description: "Consulta el clima actual y la previsión meteorológica de ciudades de todo el mundo desde un dashboard visual y rápido.",
+    url: "/cities",
+    siteName: SITE_NAME,
+    images: [OG_IMAGE],
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tiempo por ciudades | Liquid Weather",
+    description: "Consulta el clima actual y la previsión meteorológica de ciudades de todo el mundo.",
+    images: [OG_IMAGE]
+  }
 };
 
 // Rendered on demand so the dashboard reflects live weather without requiring

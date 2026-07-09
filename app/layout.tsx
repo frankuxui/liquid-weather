@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { OG_IMAGE, SITE_BASE_URL, SITE_DESCRIPTION, SITE_NAME } from "@/lib/seo";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -12,17 +13,46 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: SITE_BASE_URL,
+  applicationName: SITE_NAME,
   title: {
-    default: "Liquid Weather — El tiempo con estilo Liquid Glass",
-    template: "%s · Liquid Weather"
+    default: "Liquid Weather | El tiempo actual y previsión meteorológica",
+    template: `%s | ${SITE_NAME}`
   },
-  description: "Dashboard meteorológico profesional en tiempo real con pronósticos, gráficas y widgets reorganizables. Diseño iOS Liquid Glass, datos de Open-Meteo.",
-  keywords: ["tiempo", "clima", "meteorología", "pronóstico", "weather", "dashboard", "Open-Meteo"],
-  authors: [{ name: "Liquid Weather" }],
+  description: SITE_DESCRIPTION,
+  keywords: ["tiempo actual", "previsión meteorológica", "pronóstico del tiempo", "clima por ciudad", "weather dashboard", "Open-Meteo", "calidad del aire", "previsión horaria"],
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "weather",
+  alternates: {
+    canonical: "/"
+  },
   openGraph: {
-    title: "Liquid Weather",
-    description: "El tiempo en tiempo real con un diseño premium inspirado en iOS Liquid Glass.",
+    title: "Liquid Weather | El tiempo actual y previsión meteorológica",
+    description: SITE_DESCRIPTION,
+    url: "/",
+    siteName: SITE_NAME,
+    locale: "es_ES",
+    images: [OG_IMAGE],
     type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Liquid Weather | El tiempo actual y previsión meteorológica",
+    description: SITE_DESCRIPTION,
+    images: [OG_IMAGE]
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1
+    }
   }
 };
 
