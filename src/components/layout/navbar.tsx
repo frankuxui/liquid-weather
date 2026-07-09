@@ -11,7 +11,8 @@ import { cn } from "@/lib/utils";
 
 const LINKS = [
   { href: "/", label: "Inicio" },
-  { href: "/cities", label: "Ciudades" }
+  { href: "/cities", label: "Ciudades" },
+  { href: "/compare", label: "Comparar" }
 ];
 
 export function Navbar() {

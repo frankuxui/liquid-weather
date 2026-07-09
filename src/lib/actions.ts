@@ -2,7 +2,7 @@
 
 import { CITIES, getCityBySlug } from "./cities";
 import { fetchCitySummaries, fetchCityWeather } from "./open-meteo";
-import type { CitySummary, CityWeather, WeatherResult } from "./types";
+import type { City, CitySummary, CityWeather, WeatherResult } from "./types";
 
 /**
  * Server Action: fetch weather summaries for the dashboard, optionally
@@ -21,6 +21,26 @@ export async function getCitySummariesAction(query?: string): Promise<WeatherRes
     return {
       data: null,
       error: err instanceof Error ? err.message : "No se pudieron cargar los datos meteorológicos."
+    };
+  }
+}
+
+/**
+ * Server Action: full weather bundle for an arbitrary City object (catalogue
+ * or user-searched). Used by the comparator, where cities may not exist in the
+ * curated catalogue and are identified by coordinates rather than slug.
+ */
+export async function getCityWeatherForCityAction(city: City): Promise<WeatherResult<CityWeather>> {
+  try {
+    if (!Number.isFinite(city?.latitude) || !Number.isFinite(city?.longitude)) {
+      return { data: null, error: "Coordenadas de ciudad inválidas." };
+    }
+    const data = await fetchCityWeather(city);
+    return { data, error: null };
+  } catch (err) {
+    return {
+      data: null,
+      error: err instanceof Error ? err.message : "No se pudo cargar la información de la ciudad."
     };
   }
 }

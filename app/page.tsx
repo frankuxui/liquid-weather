@@ -55,7 +55,7 @@ export default function HomePage() {
             <Sparkles size={13} /> El tiempo, reinventado
           </Badge>
           <h1 className="text-balance text-5xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
-            El tiempo con estilo <span className="text-gradient">Liquid Glass</span>
+            El tiempo con estilo <span className="home-liquid-gradient">Liquid Glass</span>
           </h1>
           <p className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground">
             Un dashboard meteorológico profesional con pronósticos en tiempo real, gráficas interactivas y widgets que reorganizas a tu gusto. Rápido, elegante y siempre actualizado.

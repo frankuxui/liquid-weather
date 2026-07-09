@@ -11,6 +11,9 @@
 
   --primary: 199 89% 58%;
   --primary-foreground: 222 47% 8%;
+  --home-gradient-from: 142 71% 58%;
+  --home-gradient-via: 199 89% 70%;
+  --home-gradient-to: 250 84% 76%;
 
   --secondary: 217 33% 20%;
   --secondary-foreground: 210 40% 98%;
@@ -236,6 +239,14 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .home-liquid-gradient {
+    background: linear-gradient(118deg, hsl(var(--home-gradient-from)) 0%, hsl(var(--home-gradient-via)) 52%, hsl(var(--home-gradient-to)) 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
     color: transparent;
   }
 }

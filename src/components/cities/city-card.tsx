@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { Droplets, Wind, Thermometer, MapPin } from "lucide-react";
 import { GlassCard } from "@/components/glass/glass-card";
+import { FlagAvatar } from "@/components/ui/flag-avatar";
 import { WeatherIcon } from "@/components/weather/weather-icon";
 import { FavoriteButton } from "@/components/weather/favorite-button";
 import { describeWeather, weatherGradient } from "@/lib/weather-codes";
-import { cityHref, flagEmoji } from "@/lib/cities";
+import { cityHref } from "@/lib/cities";
 import { useCustomCitiesStore } from "@/store/custom-cities-store";
 import type { CitySummary } from "@/lib/types";
 
@@ -28,7 +29,7 @@ export function CityCard({ summary }: { summary: CitySummary }) {
         <div className="relative flex items-start justify-between">
           <div className="min-w-0">
             <div className="flex items-center gap-2">
-              <span className="text-xl">{flagEmoji(city.countryCode)}</span>
+              <FlagAvatar countryCode={city.countryCode} label={`Bandera de ${city.country}`} className="size-7" />
               <h3 className="truncate text-lg font-semibold">{city.name}</h3>
             </div>
             <p className="mt-0.5 flex items-center gap-1 text-xs text-muted-foreground">

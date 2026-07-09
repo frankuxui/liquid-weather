@@ -10,10 +10,11 @@ type Props = {
   placeholder?: string;
   className?: string;
   inputClassName?: string;
+  inputRef?: React.Ref<HTMLInputElement>;
   visibleIconSearch?: boolean;
 };
 
-export function SearchInput({ value, onValueChange, onClear, placeholder = "Buscar...", className, inputClassName, visibleIconSearch = false }: Props) {
+export function SearchInput({ value, onValueChange, onClear, placeholder = "Buscar...", className, inputClassName, inputRef, visibleIconSearch = false }: Props) {
   return (
     <div className={cn("relative", className)}>
       {visibleIconSearch && (
@@ -22,10 +23,11 @@ export function SearchInput({ value, onValueChange, onClear, placeholder = "Busc
         </div>
       )}
       <input
+        ref={inputRef}
         placeholder={placeholder}
         className={
           inputClassName ??
-          "h-11 w-full rounded-full border border-white/10 bg-white/5 pl-11 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-primary/50 focus:bg-white/8 pr-10"
+          "h-11 w-full rounded-full border-2 border-white/10 bg-white/5 pl-11 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-foreground focus:bg-white/8 pr-10"
         }
         value={value}
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {

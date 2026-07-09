@@ -4,10 +4,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, MapPin, RefreshCw } from "lucide-react";
 import { GlassCard } from "@/components/glass/glass-card";
+import { FlagAvatar } from "@/components/ui/flag-avatar";
 import { WeatherIcon } from "@/components/weather/weather-icon";
 import { FavoriteButton } from "@/components/weather/favorite-button";
 import { describeWeather, weatherGradient } from "@/lib/weather-codes";
-import { flagEmoji } from "@/lib/cities";
 import { formatHour } from "@/lib/utils";
 import { useCustomCitiesStore } from "@/store/custom-cities-store";
 import type { CityWeather } from "@/lib/types";
@@ -48,7 +48,7 @@ export function CityHeader({ weather }: { weather: CityWeather }) {
       <div className="relative mt-6 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-2xl">{flagEmoji(city.countryCode)}</span>
+            <FlagAvatar countryCode={city.countryCode} label={`Bandera de ${city.country}`} className="size-9" />
             <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">{city.name}</h1>
           </div>
           <p className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">

@@ -45,8 +45,8 @@
     "semantic_hash": ""
   },
   "app/layout.tsx": {
-    "mtime": 1783626717.8377054,
-    "ast_hash": "07762b50c983a35f30014dbb8da62cfb",
+    "mtime": 1783617408.2819486,
+    "ast_hash": "e8f490c68481dd2cfc73410b09232212",
     "semantic_hash": ""
   },
   "app/page.tsx": {
@@ -75,8 +75,8 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1783626645.9867942,
-    "ast_hash": "c0c48cf6e8b63f7c0bc1ad373f2a1192",
+    "mtime": 1783613837.268615,
+    "ast_hash": "e248199f82747177ab64708b9008a1aa",
     "semantic_hash": ""
   },
   "postcss.config.mjs": {
@@ -110,8 +110,8 @@
     "semantic_hash": "306323afe05f1d9faf698c91cab7e244"
   },
   "src/components/cities/add-location-panel.tsx": {
-    "mtime": 1783626717.8627176,
-    "ast_hash": "432477e6543d2ac0e1c481370f78ae7c",
+    "mtime": 1783625994.0637565,
+    "ast_hash": "811ae9c7ff6961ae52c28bc80905a080",
     "semantic_hash": ""
   },
   "src/components/cities/cities-view.tsx": {
@@ -120,14 +120,14 @@
     "semantic_hash": ""
   },
   "src/components/cities/city-card.tsx": {
-    "mtime": 1783626717.840709,
-    "ast_hash": "47130fb33235b11d261beab70ebc97d0",
-    "semantic_hash": ""
+    "mtime": 1783603203.829741,
+    "ast_hash": "5125153858251d2e86dd6017125ff5f4",
+    "semantic_hash": "5125153858251d2e86dd6017125ff5f4"
   },
   "src/components/cities/compact-city-card.tsx": {
-    "mtime": 1783626717.8417034,
-    "ast_hash": "b65aaf00288b068bb2c453fe0e5321f0",
-    "semantic_hash": ""
+    "mtime": 1783617775.4858222,
+    "ast_hash": "02dee9f95dd612c94cba0dd0bd02f33e",
+    "semantic_hash": "02dee9f95dd612c94cba0dd0bd02f33e"
   },
   "src/components/cities/view-selector.tsx": {
     "mtime": 1783618824.0618756,
@@ -145,9 +145,9 @@
     "semantic_hash": ""
   },
   "src/components/city/city-header.tsx": {
-    "mtime": 1783626717.8557084,
-    "ast_hash": "218774c36c4af844cc1a374e231f6133",
-    "semantic_hash": ""
+    "mtime": 1783603203.8987534,
+    "ast_hash": "4f6c28592ac1f61fe4efdf82c1e99bc4",
+    "semantic_hash": "4f6c28592ac1f61fe4efdf82c1e99bc4"
   },
   "src/components/city/daily-forecast.tsx": {
     "mtime": 1783604659.4543748,
@@ -170,8 +170,8 @@
     "semantic_hash": "189f4d1cdf51df539fb1323d7e169ffa"
   },
   "src/components/layout/favorites-menu.tsx": {
-    "mtime": 1783626717.8447073,
-    "ast_hash": "a9807bff8ffb5ab73938a3e68306c24d",
+    "mtime": 1783618861.2977173,
+    "ast_hash": "abcd2a2fb0d8ec3aa2a5e6a22ba01460",
     "semantic_hash": ""
   },
   "src/components/layout/footer.tsx": {
@@ -275,9 +275,9 @@
     "semantic_hash": ""
   },
   "src/lib/cities.ts": {
-    "mtime": 1783626798.834382,
-    "ast_hash": "277069410b41f0ada94d5f660c56f126",
-    "semantic_hash": ""
+    "mtime": 1783603204.5171342,
+    "ast_hash": "35732108f5c6c5582a1b52f27d703f12",
+    "semantic_hash": "35732108f5c6c5582a1b52f27d703f12"
   },
   "src/lib/continents.ts": {
     "mtime": 1783603204.540907,
@@ -365,13 +365,13 @@
     "semantic_hash": ""
   },
   "src/components/compare/city-search-modal.tsx": {
-    "mtime": 1783626717.8467045,
-    "ast_hash": "1ab0fa89d0989cb7fa6f37a78cfef39a",
+    "mtime": 1783625807.2828844,
+    "ast_hash": "e09f3ac32bc8a5efd713c282cd1bedbf",
     "semantic_hash": ""
   },
   "src/components/compare/compare-view.tsx": {
-    "mtime": 1783626717.8477058,
-    "ast_hash": "74364d528dd3eb5c015b0ab0a5f20758",
+    "mtime": 1783625582.7663145,
+    "ast_hash": "83f0a40849efd6e565ac773c8639a6ed",
     "semantic_hash": ""
   },
   "src/components/compare/comparison-analytics.tsx": {
@@ -567,11 +567,6 @@
   "public/window.svg": {
     "mtime": 1783601441.1977475,
     "ast_hash": "a2760511c65806022ad20adf74370ff3",
-    "semantic_hash": ""
-  },
-  "src/components/ui/flag-avatar.tsx": {
-    "mtime": 1783626961.889745,
-    "ast_hash": "6b8b8d67ce8d584f140801ed0774ca87",
     "semantic_hash": ""
   }
 }

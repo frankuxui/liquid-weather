@@ -7,8 +7,9 @@ import { FloatingFocusManager, FloatingOverlay, FloatingPortal, useClick, useDis
 import { AnimatePresence, motion } from "motion/react";
 import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import { FlagAvatar } from "@/components/ui/flag-avatar";
 import { cn } from "@/lib/utils";
-import { cityHref, customCitySlug, flagEmoji } from "@/lib/cities";
+import { cityHref, customCitySlug } from "@/lib/cities";
 import { continentFromCountryCode, continentFromTimezone } from "@/lib/continents";
 import { searchLocations } from "@/lib/geocoding";
 import { resolveTimezone } from "@/lib/open-meteo";
@@ -184,7 +185,7 @@ function SearchTab({ onAdd }: { onAdd: (city: City) => void }) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Ciudad o país, p. ej. Kioto, Marrakech…"
-          className="h-11 w-full rounded-full border border-white/10 bg-white/5 pl-11 pr-4 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-primary/50 focus:bg-white/8"
+          className="h-11 w-full rounded-full border-2 border-white/10 bg-white/5 pl-11 pr-4 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-foreground focus:bg-white/8"
         />
         {loading && <Loader2 size={16} className="absolute right-4 top-1/2 -translate-y-1/2 animate-spin text-muted-foreground" />}
       </div>
@@ -213,7 +214,7 @@ function SearchTab({ onAdd }: { onAdd: (city: City) => void }) {
                 }
                 className="glass glass-hover flex w-full items-center gap-3 rounded-2xl p-3 text-left"
               >
-                <span className="text-xl">{flagEmoji(r.countryCode)}</span>
+                <FlagAvatar countryCode={r.countryCode} label={`Bandera de ${r.country}`} />
                 <span className="min-w-0 flex-1">
                   <span className="block truncate font-medium">{r.name}</span>
                   <span className="block truncate text-xs text-muted-foreground">
@@ -276,7 +277,7 @@ function CoordsTab({ onAdd }: { onAdd: (city: City) => void }) {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Mi ubicación"
-          className="h-11 w-full rounded-2xl border border-white/10 bg-white/5 px-4 text-sm outline-none focus:border-primary/50"
+          className="h-11 w-full rounded-2xl border-2 border-white/10 bg-white/5 px-4 text-sm outline-none focus:border-foreground"
         />
       </Field>
 
@@ -287,7 +288,7 @@ function CoordsTab({ onAdd }: { onAdd: (city: City) => void }) {
             onChange={(e) => setLatitude(e.target.value)}
             placeholder="40,4168"
             inputMode="decimal"
-            className="h-11 w-full rounded-2xl border border-white/10 bg-white/5 px-4 text-sm outline-none focus:border-primary/50"
+            className="h-11 w-full rounded-2xl border-2 border-white/10 bg-white/5 px-4 text-sm outline-none focus:border-foreground"
           />
         </Field>
         <Field label="Longitud">
@@ -296,7 +297,7 @@ function CoordsTab({ onAdd }: { onAdd: (city: City) => void }) {
             onChange={(e) => setLongitude(e.target.value)}
             placeholder="-3,7038"
             inputMode="decimal"
-            className="h-11 w-full rounded-2xl border border-white/10 bg-white/5 px-4 text-sm outline-none focus:border-primary/50"
+            className="h-11 w-full rounded-2xl border-2 border-white/10 bg-white/5 px-4 text-sm outline-none focus:border-foreground"
           />
         </Field>
       </div>
@@ -306,7 +307,7 @@ function CoordsTab({ onAdd }: { onAdd: (city: City) => void }) {
           value={country}
           onChange={(e) => setCountry(e.target.value)}
           placeholder="España"
-          className="h-11 w-full rounded-2xl border border-white/10 bg-white/5 px-4 text-sm outline-none focus:border-primary/50"
+          className="h-11 w-full rounded-2xl border-2 border-white/10 bg-white/5 px-4 text-sm outline-none focus:border-foreground"
         />
       </Field>
 

@@ -146,13 +146,6 @@ export function getAllCitySlugs(): string[] {
   return CITIES.map((c) => c.slug);
 }
 
-/** Flag emoji from an ISO country code, e.g. "ES" -> 🇪🇸. Falls back to a globe for unknown/blank codes. */
-export function flagEmoji(countryCode: string): string {
-  const code = countryCode.toUpperCase();
-  if (!/^[A-Z]{2}$/.test(code)) return "🌍";
-  return code.replace(/./g, (ch) => String.fromCodePoint(127397 + ch.charCodeAt(0)));
-}
-
 /** URL-safe slug from a free-form name, e.g. "São Paulo" -> "sao-paulo" */
 export function slugify(name: string): string {
   return name
@@ -206,7 +199,7 @@ export function buildCityFromParams(slug: string, params: Record<string, string 
   const continent = get("continent") as City["continent"] | undefined;
 
   // countryCode may legitimately be "" for manual-coordinate entries with no
-  // known ISO code (flagEmoji falls back to a globe icon in that case).
+  // known ISO code. The UI shows a neutral fallback avatar in that case.
   if (!name || !country || countryCode === undefined || !tz || !continent || !Number.isFinite(lat) || !Number.isFinite(lon)) {
     return undefined;
   }

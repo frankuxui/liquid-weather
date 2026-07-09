@@ -6,9 +6,10 @@ import { Heart, X, MapPin, Plus, Loader2 } from "lucide-react";
 import { FloatingFocusManager, FloatingNode, FloatingOverlay, FloatingPortal, FloatingTree, useClick, useDismiss, useFloating, useFloatingNodeId, useInteractions, useRole } from "@floating-ui/react";
 import { AnimatePresence, motion } from "motion/react";
 import { SearchInput } from "@/components/ui/search-input";
+import { FlagAvatar } from "@/components/ui/flag-avatar";
 import { useFavoritesStore } from "@/store/favorites-store";
 import { useCustomCitiesStore } from "@/store/custom-cities-store";
-import { CITIES, cityHref, customCitySlug, flagEmoji } from "@/lib/cities";
+import { CITIES, cityHref, customCitySlug } from "@/lib/cities";
 import { continentFromCountryCode } from "@/lib/continents";
 import { searchLocations } from "@/lib/geocoding";
 import type { City, GeocodingResult } from "@/lib/types";
@@ -116,7 +117,7 @@ function FavoritesMenuInner() {
                       {favoriteCities.map((c) => (
                         <li key={c.slug}>
                           <Link href={cityHref(c)} onClick={close} className="glass glass-hover flex items-center gap-3 rounded-2xl p-3">
-                            <span className="text-2xl">{flagEmoji(c.countryCode)}</span>
+                            <FlagAvatar countryCode={c.countryCode} label={`Bandera de ${c.country}`} />
                             <span className="flex flex-col">
                               <span className="font-medium">{c.name}</span>
                               <span className="flex items-center gap-1 text-xs text-muted-foreground">
@@ -273,7 +274,7 @@ function AddCitiesModal({ open, onOpenChange }: { open: boolean; onOpenChange: (
                             disabled={added}
                             className="glass glass-hover flex w-full items-center gap-3 rounded-2xl p-3 text-left disabled:cursor-default disabled:opacity-60"
                           >
-                            <span className="text-xl">{flagEmoji(r.countryCode)}</span>
+                            <FlagAvatar countryCode={r.countryCode} label={`Bandera de ${r.country}`} />
                             <span className="min-w-0 flex-1">
                               <span className="block truncate font-medium">{r.name}</span>
                               <span className="block truncate text-xs text-muted-foreground">

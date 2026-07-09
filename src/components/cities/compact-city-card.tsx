@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { GlassCard } from "@/components/glass/glass-card";
+import { FlagAvatar } from "@/components/ui/flag-avatar";
 import { WeatherIcon } from "@/components/weather/weather-icon";
 import { FavoriteButton } from "@/components/weather/favorite-button";
 import { weatherGradient } from "@/lib/weather-codes";
-import { cityHref, flagEmoji } from "@/lib/cities";
+import { cityHref } from "@/lib/cities";
 import { useCustomCitiesStore } from "@/store/custom-cities-store";
 import type { CitySummary } from "@/lib/types";
 
@@ -28,7 +29,7 @@ export function CompactCityCard({ summary, layout = "compact" }: { summary: City
             className="pointer-events-none absolute -left-6 top-1/2 h-24 w-24 -translate-y-1/2 rounded-full opacity-30 blur-2xl transition-opacity duration-500 group-hover:opacity-50"
             style={{ background: weatherGradient(current.weatherCode, current.isDay) }}
           />
-          <span className="relative text-2xl">{flagEmoji(city.countryCode)}</span>
+          <FlagAvatar countryCode={city.countryCode} label={`Bandera de ${city.country}`} className="relative size-8" />
           <div className="relative min-w-0 flex-1">
             <h3 className="truncate font-semibold leading-tight">{city.name}</h3>
             <p className="truncate text-xs text-muted-foreground">{city.country}</p>
@@ -50,7 +51,7 @@ export function CompactCityCard({ summary, layout = "compact" }: { summary: City
           style={{ background: weatherGradient(current.weatherCode, current.isDay) }}
         />
         <div className="relative flex items-start justify-between">
-          <span className="text-xl">{flagEmoji(city.countryCode)}</span>
+          <FlagAvatar countryCode={city.countryCode} label={`Bandera de ${city.country}`} className="size-7" />
           <span className="-mr-1 -mt-1 shrink-0">{favorite}</span>
         </div>
         <div className="relative mt-3 flex items-end justify-between gap-2">
