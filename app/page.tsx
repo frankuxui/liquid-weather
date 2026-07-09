@@ -47,7 +47,7 @@ const HIGHLIGHTS = [
 
 export default function HomePage() {
   return (
-    <div className="mx-auto max-w-6xl px-4">
+    <div className="mx-auto max-w-7xl px-10">
       {/* Hero */}
       <section className="grid items-center gap-12 py-16 md:grid-cols-2 md:py-24">
         <div className="animate-fade-in">
@@ -66,7 +66,7 @@ export default function HomePage() {
                 Consultar el tiempo <ArrowRight size={18} />
               </Link>
             </Button>
-            <Button asChild variant="glass" size="lg">
+            <Button asChild variant="secondary" size="lg">
               <Link href="#features">Descubre más</Link>
             </Button>
           </div>
@@ -102,7 +102,7 @@ export default function HomePage() {
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map(({ icon: Icon, title, description }, i) => (
             <GlassCard key={title} hover className="animate-fade-in p-6" style={{ animationDelay: `${i * 60}ms` }}>
-              <span className="mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-primary/25 to-accent/25">
+              <span className="mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-linear-to-br from-primary/25 to-accent/25">
                 <Icon size={22} className="text-primary" />
               </span>
               <h3 className="text-lg font-semibold">{title}</h3>

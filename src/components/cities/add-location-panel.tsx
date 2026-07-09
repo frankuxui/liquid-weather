@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, MapPin, Plus, Search, X } from "lucide-react";
+import { FloatingFocusManager, FloatingOverlay, FloatingPortal, useClick, useDismiss, useFloating, useInteractions, useRole } from "@floating-ui/react";
+import { AnimatePresence, motion } from "motion/react";
 import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -16,13 +18,33 @@ import type { City, GeocodingResult } from "@/lib/types";
 
 type Tab = "search" | "coords";
 
+const TABS: { key: Tab; label: string; icon: React.ReactNode }[] = [
+  { key: "search", label: "Buscar", icon: <Search size={14} /> },
+  { key: "coords", label: "Coordenadas", icon: <MapPin size={14} /> }
+];
+
 export function AddLocationPanel() {
   const [open, setOpen] = useState(false);
   const [tab, setTab] = useState<Tab>("search");
   const router = useRouter();
   const addCustomCity = useCustomCitiesStore((s) => s.add);
 
+  const { refs, context } = useFloating({
+    open,
+    onOpenChange: setOpen
+  });
+
+  const click = useClick(context);
+  const dismiss = useDismiss(context, { outsidePressEvent: "mousedown" });
+  const role = useRole(context, { role: "dialog" });
+  const { getReferenceProps, getFloatingProps } = useInteractions([click, dismiss, role]);
+
   const close = () => setOpen(false);
+
+  // Reset to the first tab every time the modal is reopened.
+  useEffect(() => {
+    if (open) setTab("search");
+  }, [open]);
 
   const handleAdd = (city: City) => {
     addCustomCity(city);
@@ -30,68 +52,92 @@ export function AddLocationPanel() {
     router.push(cityHref(city));
   };
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && close();
-    if (open) window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open]);
-
   return (
     <>
       <button
+        ref={refs.setReference}
         type="button"
-        onClick={() => setOpen(true)}
         className="flex h-11 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 text-sm font-medium text-foreground/80 transition-colors hover:bg-white/8"
+        {...getReferenceProps()}
       >
         <Plus size={16} /> Añadir ubicación
       </button>
 
-      <div
-        className={cn("fixed inset-0 z-50 grid place-items-center p-4 transition-opacity duration-300", open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0")}
-        aria-hidden={!open}
-      >
-        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={close} />
-        <div
-          role="dialog"
-          aria-label="Añadir ubicación"
-          className={cn("glass-strong relative flex w-full max-w-lg flex-col gap-5 rounded-3xl p-6 transition-all duration-300", open ? "translate-y-0 scale-100" : "translate-y-4 scale-95")}
-        >
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold">Añadir ubicación</h2>
-            <button type="button" onClick={close} className="grid h-9 w-9 place-items-center rounded-full hover:bg-white/10" aria-label="Cerrar">
-              <X size={18} />
-            </button>
-          </div>
+      <FloatingPortal>
+        <AnimatePresence>
+          {open && (
+            <FloatingOverlay lockScroll className="z-50 grid place-items-center p-4">
+              <motion.div
+                className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                onClick={close}
+              />
 
-          <div className="flex gap-2">
-            <TabButton active={tab === "search"} onClick={() => setTab("search")} icon={<Search size={14} />}>
-              Buscar
-            </TabButton>
-            <TabButton active={tab === "coords"} onClick={() => setTab("coords")} icon={<MapPin size={14} />}>
-              Coordenadas
-            </TabButton>
-          </div>
+              <FloatingFocusManager context={context}>
+                <motion.div
+                  ref={refs.setFloating}
+                  aria-label="Añadir ubicación"
+                  layout
+                  initial={{ opacity: 0, scale: 0.95, y: 16 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 16 }}
+                  transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                  className="glass-strong relative flex w-full max-w-lg flex-col gap-5 overflow-hidden rounded-3xl p-6"
+                  {...getFloatingProps()}
+                >
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-lg font-semibold">Añadir ubicación</h2>
+                    <button type="button" onClick={close} className="grid h-9 w-9 place-items-center rounded-full hover:bg-white/10" aria-label="Cerrar">
+                      <X size={18} />
+                    </button>
+                  </div>
 
-          {tab === "search" ? <SearchTab onAdd={handleAdd} /> : <CoordsTab onAdd={handleAdd} />}
-        </div>
-      </div>
+                  <div className="flex gap-1 rounded-full bg-white/5 p-1">
+                    {TABS.map((t) => (
+                      <button
+                        key={t.key}
+                        type="button"
+                        onClick={() => setTab(t.key)}
+                        aria-pressed={tab === t.key}
+                        className={cn(
+                          "relative isolate flex flex-1 items-center justify-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                          tab === t.key ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+                        )}
+                      >
+                        {tab === t.key && (
+                          <motion.span
+                            layoutId="add-location-active-tab"
+                            className="absolute inset-0 -z-10 rounded-full bg-primary"
+                            transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                          />
+                        )}
+                        <span className="relative z-10 flex items-center">{t.icon}</span>
+                        <span className="relative z-10">{t.label}</span>
+                      </button>
+                    ))}
+                  </div>
+
+                  <AnimatePresence mode="popLayout" initial={false}>
+                    <motion.div
+                      key={tab}
+                      initial={{ opacity: 0, x: tab === "search" ? -12 : 12 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: tab === "search" ? 12 : -12 }}
+                      transition={{ duration: 0.18, ease: [0.2, 0.8, 0.2, 1] }}
+                    >
+                      {tab === "search" ? <SearchTab onAdd={handleAdd} /> : <CoordsTab onAdd={handleAdd} />}
+                    </motion.div>
+                  </AnimatePresence>
+                </motion.div>
+              </FloatingFocusManager>
+            </FloatingOverlay>
+          )}
+        </AnimatePresence>
+      </FloatingPortal>
     </>
-  );
-}
-
-function TabButton({ active, onClick, icon, children }: { active: boolean; onClick: () => void; icon: React.ReactNode; children: React.ReactNode }) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={cn(
-        "flex flex-1 items-center justify-center gap-1.5 rounded-full border px-4 py-2 text-sm font-medium transition-colors",
-        active ? "border-primary/40 bg-primary/20 text-primary" : "border-white/10 bg-white/5 text-foreground/70 hover:bg-white/8"
-      )}
-    >
-      {icon}
-      {children}
-    </button>
   );
 }
 

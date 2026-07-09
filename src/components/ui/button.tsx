@@ -2,14 +2,15 @@ import * as React from "react";
 import { Slot } from "@/components/ui/slot";
 import { cn } from "@/lib/utils";
 
-type Variant = "primary" | "glass" | "ghost" | "outline";
+type Variant = "primary" | "glass" | "ghost" | "outline" | "secondary";
 type Size = "sm" | "md" | "lg" | "icon";
 
 const variants: Record<Variant, string> = {
   primary: "bg-primary text-primary-foreground shadow-glass-sm hover:brightness-110 active:scale-[0.98]",
   glass: "glass text-foreground hover:border-white/25 active:scale-[0.98]",
   ghost: "text-foreground/80 hover:bg-white/10 hover:text-foreground",
-  outline: "border border-border bg-transparent text-foreground hover:bg-white/5"
+  outline: "border-2 border-border bg-transparent text-foreground hover:bg-white/5",
+  secondary: "bg-white/10 shadow-glass-sm hover:bg-white/5 active:scale-[0.98]"
 };
 
 const sizes: Record<Size, string> = {
