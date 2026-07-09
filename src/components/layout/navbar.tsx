@@ -20,7 +20,7 @@ export function Navbar() {
   const toggleMobileMenu = useMobileMenuStore((s) => s.toggle);
 
   return (
-    <header className="sticky top-0 z-40 pt-4">
+    <header className="sticky top-0 z-40 pt-[calc(env(safe-area-inset-top)+1rem)]">
       <div className="mx-auto max-w-7xl px-10">
         <nav className="glass mx-auto flex max-w-7xl items-center justify-between rounded-full px-4 py-2.5 backdrop-blur-lg">
           <Link href="/" className="flex items-center gap-2.5 font-semibold">
