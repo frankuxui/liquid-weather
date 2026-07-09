@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
   variable: "--font-sans",
   display: "swap",
 });
@@ -47,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={inter.variable}>
+    <html lang="es" className={poppins.variable}>
       <body className="font-sans antialiased">
         <Navbar />
         <main className="relative">{children}</main>

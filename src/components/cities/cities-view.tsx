@@ -5,6 +5,7 @@ import { Search, SlidersHorizontal, Star, X } from "lucide-react";
 import { CityCard } from "./city-card";
 import { GlassCard } from "@/components/glass/glass-card";
 import { Badge } from "@/components/ui/badge";
+import { Select } from "@/components/ui/select";
 import { useFavoritesStore } from "@/store/favorites-store";
 import { describeWeather } from "@/lib/weather-codes";
 import { cn } from "@/lib/utils";
@@ -121,18 +122,12 @@ export function CitiesView({ summaries }: { summaries: CitySummary[] }) {
           {/* Sort */}
           <div className="relative flex items-center gap-2">
             <SlidersHorizontal size={16} className="text-muted-foreground" />
-            <select
+            <Select
+              options={SORT_OPTIONS.map((o) => ({ value: o.key, label: o.label }))}
               value={sort}
-              onChange={(e) => setSort(e.target.value as SortKey)}
-              className="h-11 cursor-pointer rounded-full border border-white/10 bg-white/5 px-4 text-sm outline-none transition-colors focus:border-primary/50 [&>option]:bg-card [&>option]:text-foreground"
-              aria-label="Ordenar por"
-            >
-              {SORT_OPTIONS.map((o) => (
-                <option key={o.key} value={o.key}>
-                  {o.label}
-                </option>
-              ))}
-            </select>
+              onChange={setSort}
+              label="Ordenar por"
+            />
 
             <button
               type="button"
