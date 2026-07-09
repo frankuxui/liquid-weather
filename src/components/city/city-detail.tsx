@@ -17,7 +17,7 @@ export function CityDetail({ weather }: { weather: CityWeather }) {
         <CityHeader weather={weather} />
       </div>
 
-      <div className="animate-fade-in" style={{ animationDelay: "80ms" }}>
+      <div className="animate-fade-in -mx-10" style={{ animationDelay: "80ms" }}>
         <HourlyForecast hourly={weather.hourly} />
       </div>
 

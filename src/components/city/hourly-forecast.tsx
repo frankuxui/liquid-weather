@@ -7,7 +7,6 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { GlassCard } from "@/components/glass/glass-card";
 import { WeatherIcon } from "@/components/weather/weather-icon";
 import { formatHour } from "@/lib/utils";
 import type { HourlyForecast as HourlyType } from "@/lib/types";
@@ -25,6 +24,8 @@ export function HourlyForecast({ hourly }: { hourly: HourlyType[] }) {
       modules: [Navigation, Pagination],
       slidesPerView: "auto",
       spaceBetween: 12,
+      slidesOffsetBefore: 40,
+      slidesOffsetAfter: 40,
       grabCursor: true,
       watchOverflow: true,
       navigation: {
@@ -33,7 +34,8 @@ export function HourlyForecast({ hourly }: { hourly: HourlyType[] }) {
       },
       pagination: {
         el: paginationRef.current,
-        clickable: true
+        clickable: true,
+        dynamicBullets: true
       }
     });
 
@@ -43,8 +45,8 @@ export function HourlyForecast({ hourly }: { hourly: HourlyType[] }) {
   }, [hourly]);
 
   return (
-    <GlassCard className="p-5">
-      <h2 className="mb-4 text-lg font-semibold">Próximas 24 horas</h2>
+    <section>
+      <h2 className="mb-4 px-10 text-lg font-semibold">Próximas 24 horas</h2>
       <div
         ref={swiperRef}
         className="swiper no-scrollbar [--swiper-navigation-color:var(--primary)] [--swiper-navigation-size:18px] [--swiper-pagination-color:#facc15] [--swiper-pagination-bullet-inactive-color:rgba(255,255,255,0.35)]"
@@ -68,6 +70,6 @@ export function HourlyForecast({ hourly }: { hourly: HourlyType[] }) {
         <button ref={nextRef} type="button" className="swiper-button-next" aria-label="Horas siguientes" />
         <div ref={paginationRef} className="swiper-pagination" />
       </div>
-    </GlassCard>
+    </section>
   );
 }
