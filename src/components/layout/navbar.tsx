@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CloudSun, Menu } from "lucide-react";
+import { CloudSun } from "lucide-react";
 import { FavoritesMenu } from "./favorites-menu";
 import { ThemeSelector } from "./theme-selector";
 import { MobileMenu } from "@/components/mobile-menu";

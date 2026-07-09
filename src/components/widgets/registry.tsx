@@ -143,7 +143,7 @@ export const WIDGETS: WidgetDef[] = [
       const d = w.daily[0];
       return (
         <WidgetShell title="Sol" icon={<Sunrise size={16} />} accent="hsl(38 92% 60%)" footer={`${formatDuration(d.daylightSeconds)} de luz`}>
-          <SunArc sunrise={d.sunrise} sunset={d.sunset} />
+          <SunArc sunrise={d.sunrise} sunset={d.sunset} now={w.fetchedAt} />
         </WidgetShell>
       );
     }

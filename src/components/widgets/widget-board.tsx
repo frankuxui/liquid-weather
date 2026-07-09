@@ -17,12 +17,16 @@ export function WidgetBoard({ weather }: { weather: CityWeather }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const swapyRef = useRef<Swapy | null>(null);
   const [resetKey, setResetKey] = useState(0);
+  const [mounted, setMounted] = useState(false);
+  const hasHydrated = useLayoutStore((s) => s.hasHydrated);
 
   const slotIds = useMemo(() => WIDGETS.map((_, i) => `slot-${i}`), []);
   const defaultMap = useMemo(() => Object.fromEntries(WIDGETS.map((w, i) => [`slot-${i}`, w.id])), []);
+  const canUseSavedLayout = mounted && hasHydrated;
 
   // Read the saved arrangement imperatively so store updates don't fight Swapy.
   const slotItemMap = useMemo(() => {
+    if (!canUseSavedLayout) return defaultMap;
     const saved = useLayoutStore.getState().getLayout(slug);
     if (!saved) return defaultMap;
     // Guard against stale/partial saves: ensure every slot maps to a known item
@@ -43,7 +47,11 @@ export function WidgetBoard({ weather }: { weather: CityWeather }) {
     return map;
     // resetKey forces a recompute after a reset.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slug, defaultMap, slotIds, resetKey]);
+  }, [slug, defaultMap, slotIds, resetKey, canUseSavedLayout]);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -56,7 +64,7 @@ export function WidgetBoard({ weather }: { weather: CityWeather }) {
     });
     swapyRef.current = swapy;
     return () => swapy.destroy();
-  }, [slug, resetKey]);
+  }, [slug, resetKey, canUseSavedLayout]);
 
   const handleReset = () => {
     useLayoutStore.getState().resetLayout(slug);

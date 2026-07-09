@@ -38,10 +38,7 @@ export function WeatherIcon({ code, isDay = true, className }: { code: number; i
 
   const png = PNG_ICONS[name];
   if (png) {
-    return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img src={png} alt="" className={cn("shrink-0 object-contain", className)} aria-hidden />
-    );
+    return <img src={png} alt="" className={cn("shrink-0 object-contain", className)} aria-hidden />;
   }
 
   const Icon = ICONS[name] ?? Cloud;

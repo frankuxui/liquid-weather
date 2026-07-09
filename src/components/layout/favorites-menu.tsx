@@ -24,13 +24,22 @@ export function FavoritesMenu() {
 function FavoritesMenuInner() {
   const [open, setOpen] = useState(false);
   const [addOpen, setAddOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const favorites = useFavoritesStore((s) => s.favorites);
-  const hasHydrated = useFavoritesStore((s) => s.hasHydrated);
+  const favoritesHydrated = useFavoritesStore((s) => s.hasHydrated);
   const customCities = useCustomCitiesStore((s) => s.cities);
+  const customCitiesHydrated = useCustomCitiesStore((s) => s.hasHydrated);
+  const canShowSavedCities = mounted && favoritesHydrated && customCitiesHydrated;
+  const activeFavorites = canShowSavedCities ? favorites : [];
+  const activeCustomCities = canShowSavedCities ? customCities : [];
 
   // Curated favorites + every saved custom (searched/manual) location.
-  const favoriteCities = [...customCities, ...CITIES.filter((c) => favorites.includes(c.slug))];
-  const count = favorites.length + customCities.length;
+  const favoriteCities = [...activeCustomCities, ...CITIES.filter((c) => activeFavorites.includes(c.slug))];
+  const count = activeFavorites.length + activeCustomCities.length;
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const nodeId = useFloatingNodeId();
   const { refs, context } = useFloating({
@@ -56,7 +65,7 @@ function FavoritesMenuInner() {
         {...getReferenceProps()}
       >
         <Heart size={20} className="text-foreground/80" />
-        {hasHydrated && count > 0 && (
+        {canShowSavedCities && count > 0 && (
           <span className="absolute -right-0.5 -top-0.5 grid h-5 min-w-5 place-items-center rounded-full bg-rose-500 px-1 text-[11px] font-semibold text-white">{count}</span>
         )}
       </button>

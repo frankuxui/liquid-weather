@@ -3,17 +3,20 @@
 import { useEffect, useMemo, useState } from "react";
 import { Search, SlidersHorizontal, Star, X } from "lucide-react";
 import { CityCard } from "./city-card";
+import { CompactCityCard } from "./compact-city-card";
+import { ViewSelector } from "./view-selector";
 import { AddLocationPanel } from "./add-location-panel";
 import { GlassCard } from "@/components/glass/glass-card";
 import { Badge } from "@/components/ui/badge";
 import { Select } from "@/components/ui/select";
 import { useFavoritesStore } from "@/store/favorites-store";
 import { useCustomCitiesStore } from "@/store/custom-cities-store";
+import { useCitiesViewStore } from "@/store/cities-view-store";
 import { describeWeather } from "@/lib/weather-codes";
 import { fetchCitySummaries } from "@/lib/open-meteo";
 import { CONTINENTS } from "@/lib/cities";
 import { cn } from "@/lib/utils";
-import type { CitySummary, Continent } from "@/lib/types";
+import type { City, CitySummary, Continent } from "@/lib/types";
 import { SearchInput } from "../ui/search-input";
 
 type SortKey = "favorites" | "name-asc" | "name-desc" | "temp-desc" | "temp-asc" | "humidity-desc" | "humidity-asc" | "wind-desc" | "wind-asc" | "feels-desc" | "feels-asc";
@@ -42,6 +45,9 @@ const CONDITIONS: { key: string; label: string }[] = [
   { key: "thunder", label: "Tormenta" }
 ];
 
+const EMPTY_FAVORITES: string[] = [];
+const EMPTY_CUSTOM_CITIES: City[] = [];
+
 export function CitiesView({ summaries }: { summaries: CitySummary[] }) {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState<SortKey>("favorites");
@@ -49,23 +55,35 @@ export function CitiesView({ summaries }: { summaries: CitySummary[] }) {
   const [onlyFavorites, setOnlyFavorites] = useState(false);
   const [continent, setContinent] = useState<Continent | "all">("all");
   const [customSummaries, setCustomSummaries] = useState<CitySummary[]>([]);
+  const [mounted, setMounted] = useState(false);
 
   const favorites = useFavoritesStore((s) => s.favorites);
+  const favoritesHydrated = useFavoritesStore((s) => s.hasHydrated);
   const customCities = useCustomCitiesStore((s) => s.cities);
+  const customCitiesHydrated = useCustomCitiesStore((s) => s.hasHydrated);
+  const view = useCitiesViewStore((s) => s.view);
+  const viewHydrated = useCitiesViewStore((s) => s.hasHydrated);
+  const activeFavorites = mounted && favoritesHydrated ? favorites : EMPTY_FAVORITES;
+  const activeCustomCities = mounted && customCitiesHydrated ? customCities : EMPTY_CUSTOM_CITIES;
+  const activeView = mounted && viewHydrated ? view : "relaxed";
 
   useEffect(() => {
-    if (customCities.length === 0) {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (activeCustomCities.length === 0) {
       setCustomSummaries([]);
       return;
     }
     let cancelled = false;
-    fetchCitySummaries(customCities).then((result) => {
+    fetchCitySummaries(activeCustomCities).then((result) => {
       if (!cancelled) setCustomSummaries(result);
     });
     return () => {
       cancelled = true;
     };
-  }, [customCities]);
+  }, [activeCustomCities]);
 
   const allSummaries = useMemo(() => [...customSummaries, ...summaries], [customSummaries, summaries]);
 
@@ -83,7 +101,7 @@ export function CitiesView({ summaries }: { summaries: CitySummary[] }) {
         const group = describeWeather(s.current.weatherCode).group;
         if (!conditions.includes(group)) return false;
       }
-      if (onlyFavorites && !s.city.custom && !favorites.includes(s.city.slug)) return false;
+      if (onlyFavorites && !s.city.custom && !activeFavorites.includes(s.city.slug)) return false;
       return true;
     });
 
@@ -93,14 +111,14 @@ export function CitiesView({ summaries }: { summaries: CitySummary[] }) {
     // the user explicitly picked a different primary ordering.
     if (sort === "favorites") {
       list.sort((a, b) => {
-        const fa = a.city.custom || favorites.includes(a.city.slug) ? 1 : 0;
-        const fb = b.city.custom || favorites.includes(b.city.slug) ? 1 : 0;
+        const fa = a.city.custom || activeFavorites.includes(a.city.slug) ? 1 : 0;
+        const fb = b.city.custom || activeFavorites.includes(b.city.slug) ? 1 : 0;
         if (fa !== fb) return fb - fa;
         return a.city.name.localeCompare(b.city.name, "es");
       });
     }
     return list;
-  }, [allSummaries, search, sort, conditions, onlyFavorites, continent, favorites]);
+  }, [allSummaries, search, sort, conditions, onlyFavorites, continent, activeFavorites]);
 
   const activeFilters = (search ? 1 : 0) + conditions.length + (onlyFavorites ? 1 : 0) + (continent !== "all" ? 1 : 0);
 
@@ -170,8 +188,8 @@ export function CitiesView({ summaries }: { summaries: CitySummary[] }) {
         </div>
       </GlassCard>
 
-      {/* Results count */}
-      <div className="mb-5 flex items-center justify-between">
+      {/* Results count + view selector */}
+      <div className="mb-5 flex items-center justify-between gap-3">
         <p className="text-sm text-muted-foreground">
           {filtered.length} {filtered.length === 1 ? "ciudad" : "ciudades"}
           {activeFilters > 0 && (
@@ -180,6 +198,7 @@ export function CitiesView({ summaries }: { summaries: CitySummary[] }) {
             </Badge>
           )}
         </p>
+        <ViewSelector />
       </div>
 
       {/* Grid */}
@@ -192,10 +211,22 @@ export function CitiesView({ summaries }: { summaries: CitySummary[] }) {
             setContinent("all");
           }}
         />
-      ) : (
+      ) : activeView === "relaxed" ? (
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((s) => (
             <CityCard key={s.city.slug} summary={s} />
+          ))}
+        </div>
+      ) : activeView === "compact" ? (
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+          {filtered.map((s) => (
+            <CompactCityCard key={s.city.slug} summary={s} layout="compact" />
+          ))}
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+          {filtered.map((s) => (
+            <CompactCityCard key={s.city.slug} summary={s} layout="list" />
           ))}
         </div>
       )}

@@ -4,11 +4,11 @@ import { formatHour } from "@/lib/utils";
  * Sun path arc showing progress between sunrise and sunset, with the sun marker
  * positioned by the current time.
  */
-export function SunArc({ sunrise, sunset }: { sunrise: string; sunset: string }) {
+export function SunArc({ sunrise, sunset, now }: { sunrise: string; sunset: string; now: string }) {
   const rise = new Date(sunrise).getTime();
   const set = new Date(sunset).getTime();
-  const now = Date.now();
-  const progress = Math.max(0, Math.min(1, (now - rise) / (set - rise)));
+  const current = new Date(now).getTime();
+  const progress = Math.max(0, Math.min(1, (current - rise) / (set - rise)));
 
   // Position along a semicircle
   const angle = Math.PI * (1 - progress);

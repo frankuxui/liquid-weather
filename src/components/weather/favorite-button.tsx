@@ -64,19 +64,31 @@ export function FavoriteButton({
   onToggle?: () => void;
 }) {
   const favoritesStoreActive = useFavoritesStore((s) => s.favorites.includes(slug));
+  const hasHydrated = useFavoritesStore((s) => s.hasHydrated);
   const toggleFavorite = useFavoritesStore((s) => s.toggle);
-  const isFavorite = isActive ?? favoritesStoreActive;
+  const [mounted, setMounted] = useState(false);
+  const isFavorite = isActive ?? (mounted && hasHydrated ? favoritesStoreActive : false);
   const reduceMotion = useReducedMotion();
 
   const [burstKey, setBurstKey] = useState(0);
   const wasFavorite = useRef(isFavorite);
+  const ready = useRef(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!ready.current) {
+      ready.current = mounted;
+      wasFavorite.current = isFavorite;
+      return;
+    }
     if (isFavorite && !wasFavorite.current) {
       setBurstKey((k) => k + 1);
     }
     wasFavorite.current = isFavorite;
-  }, [isFavorite]);
+  }, [isFavorite, mounted]);
 
   const fill = isFavorite ? "#f43f5e" : "#99aab5";
 

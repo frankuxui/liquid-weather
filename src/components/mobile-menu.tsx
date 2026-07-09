@@ -172,6 +172,7 @@ export function MobileMenu({ items }: MobileMenuProps) {
             className="absolute inset-0 h-full w-full bg-black/45 backdrop-blur-xs"
             type="button"
             aria-label="Cerrar menu"
+            onClick={() => void handleClose()}
             animate={{ opacity: isClosing ? 0 : 1 }}
             transition={{ duration: shouldReduceMotion ? 0 : 0.32 }}
           />
