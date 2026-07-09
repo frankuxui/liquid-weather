@@ -18,6 +18,7 @@
     "react-dom": "19.2.4",
     "recharts": "^3.9.2",
     "swapy": "^1.0.5",
+    "swiper": "^14.0.2",
     "tailwind-merge": "^3.6.0",
     "zustand": "^5.0.14"
   },

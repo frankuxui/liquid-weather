@@ -35,6 +35,9 @@ importers:
       swapy:
         specifier: ^1.0.5
         version: 1.0.5
+      swiper:
+        specifier: ^14.0.2
+        version: 14.0.2
       tailwind-merge:
         specifier: ^3.6.0
         version: 3.6.0
@@ -2115,6 +2118,10 @@ packages:
 
   swapy@1.0.5:
     resolution: {integrity: sha512-XEzy5HCw7yESb7QajKTBJ+NA/BL0kAKlE7XhSMPZawF740X4ws/5CFtXRsVDQ+EztISC759a9+DJM9mxjz4hXg==}
+
+  swiper@14.0.2:
+    resolution: {integrity: sha512-KRFQZP0zXUh6MEmSQOJKSw27ARqS884OX/dfBz4i2/It9aixL7svh7/Ng0yZ0FE+PrjrW5vzBcjCfmNnq109XQ==}
+    engines: {node: '>= 4.7.0'}
 
   tabbable@6.5.0:
     resolution: {integrity: sha512-wieBHXygIm7OyQOu5hQlkk62/WyCFYGlWg7L6/ZCUZwx0o398Zkn4pVmMyfYhfMG8kGrj/Krt8eIk6UKC6VzwA==}
@@ -4437,6 +4444,8 @@ snapshots:
   supports-preserve-symlinks-flag@1.0.0: {}
 
   swapy@1.0.5: {}
+
+  swiper@14.0.2: {}
 
   tabbable@6.5.0: {}
 

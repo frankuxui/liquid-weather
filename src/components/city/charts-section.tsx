@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Thermometer, Umbrella, Wind } from "lucide-react";
+import { motion } from "motion/react";
 import { GlassCard } from "@/components/glass/glass-card";
 import { TemperatureChart } from "@/components/charts/temperature-chart";
 import { PrecipitationChart } from "@/components/charts/precipitation-chart";
@@ -32,13 +33,21 @@ export function ChartsSection({ weather }: { weather: CityWeather }) {
                 key={t.key}
                 type="button"
                 onClick={() => setTab(t.key)}
+                aria-pressed={tab === t.key}
                 className={cn(
-                  "flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors",
-                  tab === t.key ? "bg-white/12 text-foreground" : "text-muted-foreground hover:text-foreground"
+                  "relative isolate flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors",
+                  tab === t.key ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground"
                 )}
               >
-                {t.icon}
-                <span className="hidden sm:inline">{t.label}</span>
+                {tab === t.key && (
+                  <motion.span
+                    layoutId="hourly-chart-active-tab"
+                    className="absolute inset-0 -z-10 rounded-full bg-primary"
+                    transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                  />
+                )}
+                <span className="relative z-10 flex items-center">{t.icon}</span>
+                <span className="relative z-10 hidden sm:inline">{t.label}</span>
               </button>
             ))}
           </div>
