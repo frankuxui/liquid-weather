@@ -2,376 +2,206 @@
   ".claude/launch.json": {
     "mtime": 1783599417.5342531,
     "ast_hash": "64f537f85d563f28b9c8624e78157f5c",
-    "semantic_hash": "64f537f85d563f28b9c8624e78157f5c"
+    "semantic_hash": ""
   },
   ".claude/settings.json": {
-    "mtime": 1783623993.3971348,
+    "mtime": 1783623993.0,
     "ast_hash": "612eed145b1f159e9f92e7f0242803da",
-    "semantic_hash": "612eed145b1f159e9f92e7f0242803da"
+    "semantic_hash": ""
   },
   ".codex/hooks.json": {
     "mtime": 1783623617.3611107,
     "ast_hash": "daa50cef7724f43db4eee18803278f02",
-    "semantic_hash": "daa50cef7724f43db4eee18803278f02"
+    "semantic_hash": ""
+  },
+  "app/apple-icon.tsx": {
+    "mtime": 1783629182.3526094,
+    "ast_hash": "314b4da427e8723b1dcfb30942f62f95",
+    "semantic_hash": ""
   },
   "app/cities/loading.tsx": {
-    "mtime": 1783616185.9329495,
-    "ast_hash": "9fff34fe230dc6330877c5859cc57240",
+    "mtime": 1783603202.3410332,
+    "ast_hash": "0b694293369693f232eefef6f25eec24",
     "semantic_hash": ""
   },
   "app/cities/page.tsx": {
-    "mtime": 1783616550.5994444,
-    "ast_hash": "6f3d871ac9644709deeaffea6615f50c",
+    "mtime": 1783603202.4245636,
+    "ast_hash": "7bc5775a111aed2d32ad6db4b31fca96",
     "semantic_hash": ""
   },
   "app/city/[slug]/error.tsx": {
     "mtime": 1783602643.268401,
     "ast_hash": "3f267677c73cca9dd4def9bb6075a036",
-    "semantic_hash": "3f267677c73cca9dd4def9bb6075a036"
+    "semantic_hash": ""
   },
   "app/city/[slug]/loading.tsx": {
-    "mtime": 1783616194.9895346,
-    "ast_hash": "4de653c3dc29ecb17c904334af9aa906",
+    "mtime": 1783602648.158043,
+    "ast_hash": "d9096a3e9d82fb11c23cabbfc48efa48",
     "semantic_hash": ""
   },
   "app/city/[slug]/not-found.tsx": {
     "mtime": 1783602660.538344,
     "ast_hash": "33fc6a8d4acb45f6629e7f1cf657987b",
-    "semantic_hash": "33fc6a8d4acb45f6629e7f1cf657987b"
+    "semantic_hash": ""
   },
   "app/city/[slug]/page.tsx": {
-    "mtime": 1783616564.9633958,
-    "ast_hash": "57afcb2735e3d04613df3dba4f92a4f3",
+    "mtime": 1783603202.6218314,
+    "ast_hash": "fb22daeee65e8c46e22859a663e188cd",
     "semantic_hash": ""
-  },
-  "app/layout.tsx": {
-    "mtime": 1783626717.8377054,
-    "ast_hash": "07762b50c983a35f30014dbb8da62cfb",
-    "semantic_hash": ""
-  },
-  "app/page.tsx": {
-    "mtime": 1783626465.639874,
-    "ast_hash": "447c751d10a0d610f5120c1707bcef0d",
-    "semantic_hash": ""
-  },
-  "app/robots.ts": {
-    "mtime": 1783617412.4757974,
-    "ast_hash": "f4a24ceebe062ab93a284dc8b7685419",
-    "semantic_hash": "f4a24ceebe062ab93a284dc8b7685419"
-  },
-  "app/sitemap.ts": {
-    "mtime": 1783617420.0346153,
-    "ast_hash": "912f192956a3600fa37695a82530ed8a",
-    "semantic_hash": "912f192956a3600fa37695a82530ed8a"
-  },
-  "eslint.config.mjs": {
-    "mtime": 1783603382.05524,
-    "ast_hash": "d274b6390dc5b46236e0afed7f67927c",
-    "semantic_hash": "d274b6390dc5b46236e0afed7f67927c"
-  },
-  "next.config.ts": {
-    "mtime": 1783618575.9529278,
-    "ast_hash": "28812da701fec8d14eeee8bd90de8f74",
-    "semantic_hash": ""
-  },
-  "package.json": {
-    "mtime": 1783626645.9867942,
-    "ast_hash": "c0c48cf6e8b63f7c0bc1ad373f2a1192",
-    "semantic_hash": ""
-  },
-  "postcss.config.mjs": {
-    "mtime": 1783603203.259431,
-    "ast_hash": "e1728aee6523e793c4610f881120d2c7",
-    "semantic_hash": "e1728aee6523e793c4610f881120d2c7"
-  },
-  "src/components/charts/chart-primitives.tsx": {
-    "mtime": 1783603729.640837,
-    "ast_hash": "844e1d8ebe7b6ce03dee4e5de4a527ca",
-    "semantic_hash": "844e1d8ebe7b6ce03dee4e5de4a527ca"
-  },
-  "src/components/charts/precipitation-chart.tsx": {
-    "mtime": 1783602680.2506454,
-    "ast_hash": "1530c5121c4a481c452a336c04c7c22d",
-    "semantic_hash": "1530c5121c4a481c452a336c04c7c22d"
-  },
-  "src/components/charts/temperature-chart.tsx": {
-    "mtime": 1783603203.5597312,
-    "ast_hash": "0b3941c93d79161250dcee7ec48d280d",
-    "semantic_hash": "0b3941c93d79161250dcee7ec48d280d"
-  },
-  "src/components/charts/weekly-chart.tsx": {
-    "mtime": 1783603203.582122,
-    "ast_hash": "4cae23ef055ebeafb531fa00e0b2bb6c",
-    "semantic_hash": "4cae23ef055ebeafb531fa00e0b2bb6c"
-  },
-  "src/components/charts/wind-chart.tsx": {
-    "mtime": 1783602702.0465527,
-    "ast_hash": "306323afe05f1d9faf698c91cab7e244",
-    "semantic_hash": "306323afe05f1d9faf698c91cab7e244"
-  },
-  "src/components/cities/add-location-panel.tsx": {
-    "mtime": 1783626717.8627176,
-    "ast_hash": "432477e6543d2ac0e1c481370f78ae7c",
-    "semantic_hash": ""
-  },
-  "src/components/cities/cities-view.tsx": {
-    "mtime": 1783618851.2552283,
-    "ast_hash": "569209d4faf527588724fa68927c2378",
-    "semantic_hash": ""
-  },
-  "src/components/cities/city-card.tsx": {
-    "mtime": 1783626717.840709,
-    "ast_hash": "47130fb33235b11d261beab70ebc97d0",
-    "semantic_hash": ""
-  },
-  "src/components/cities/compact-city-card.tsx": {
-    "mtime": 1783626717.8417034,
-    "ast_hash": "b65aaf00288b068bb2c453fe0e5321f0",
-    "semantic_hash": ""
-  },
-  "src/components/cities/view-selector.tsx": {
-    "mtime": 1783618824.0618756,
-    "ast_hash": "42e34cbd7ec84c2106e9d037f04d9d4a",
-    "semantic_hash": ""
-  },
-  "src/components/city/charts-section.tsx": {
-    "mtime": 1783609325.5929866,
-    "ast_hash": "2d790b8c073113e35f8faf2e7a77d896",
-    "semantic_hash": "2d790b8c073113e35f8faf2e7a77d896"
-  },
-  "src/components/city/city-detail.tsx": {
-    "mtime": 1783616205.3522942,
-    "ast_hash": "07f1c5a43b4bc77c9e0640ee267facae",
-    "semantic_hash": ""
-  },
-  "src/components/city/city-header.tsx": {
-    "mtime": 1783626717.8557084,
-    "ast_hash": "218774c36c4af844cc1a374e231f6133",
-    "semantic_hash": ""
-  },
-  "src/components/city/daily-forecast.tsx": {
-    "mtime": 1783604659.4543748,
-    "ast_hash": "e03b06c3b4cf582c3c207c96cce78793",
-    "semantic_hash": "e03b06c3b4cf582c3c207c96cce78793"
-  },
-  "src/components/city/hourly-forecast.tsx": {
-    "mtime": 1783609034.5480902,
-    "ast_hash": "c548789f7287b074ab35f2dcc2f2275a",
-    "semantic_hash": "c548789f7287b074ab35f2dcc2f2275a"
-  },
-  "src/components/glass/glass-card.tsx": {
-    "mtime": 1783613533.9314263,
-    "ast_hash": "93a6daec86dea80c6995d5f8bca18ed6",
-    "semantic_hash": ""
-  },
-  "src/components/landing/hero-preview.tsx": {
-    "mtime": 1783613228.0365894,
-    "ast_hash": "189f4d1cdf51df539fb1323d7e169ffa",
-    "semantic_hash": "189f4d1cdf51df539fb1323d7e169ffa"
-  },
-  "src/components/layout/favorites-menu.tsx": {
-    "mtime": 1783626717.8447073,
-    "ast_hash": "a9807bff8ffb5ab73938a3e68306c24d",
-    "semantic_hash": ""
-  },
-  "src/components/layout/footer.tsx": {
-    "mtime": 1783604732.677187,
-    "ast_hash": "41bd8ce712653323f0998d0013d5e1b9",
-    "semantic_hash": "41bd8ce712653323f0998d0013d5e1b9"
-  },
-  "src/components/layout/navbar.tsx": {
-    "mtime": 1783625390.6914265,
-    "ast_hash": "b04d3f024099e46da77a897aea1fc8d3",
-    "semantic_hash": ""
-  },
-  "src/components/layout/theme-selector.tsx": {
-    "mtime": 1783614221.7412448,
-    "ast_hash": "016539356ca33bc5a6e177ea1632a82d",
-    "semantic_hash": "016539356ca33bc5a6e177ea1632a82d"
-  },
-  "src/components/mobile-menu.tsx": {
-    "mtime": 1783618907.7311976,
-    "ast_hash": "884011d8ffa7966e57bb826752f8ebb7",
-    "semantic_hash": ""
-  },
-  "src/components/ui/badge.tsx": {
-    "mtime": 1783603204.0725203,
-    "ast_hash": "a0a4ff523af3608e5073ec1bc2b466dd",
-    "semantic_hash": "a0a4ff523af3608e5073ec1bc2b466dd"
-  },
-  "src/components/ui/button.tsx": {
-    "mtime": 1783613119.7545717,
-    "ast_hash": "a37bee1d5fc5c1e7f7865b9f997a2981",
-    "semantic_hash": ""
-  },
-  "src/components/ui/close.tsx": {
-    "mtime": 1772910957.8772452,
-    "ast_hash": "0d91c89c435027e1e3d2bda6d091bbb7",
-    "semantic_hash": "0d91c89c435027e1e3d2bda6d091bbb7"
-  },
-  "src/components/ui/index.ts": {
-    "mtime": 1783613746.0151486,
-    "ast_hash": "3eddd9fd666e8af02a0dc1f4887a40de",
-    "semantic_hash": "3eddd9fd666e8af02a0dc1f4887a40de"
-  },
-  "src/components/ui/search-input.tsx": {
-    "mtime": 1783625994.061756,
-    "ast_hash": "f149d3535ef4bc0501ccaca45bc079ce",
-    "semantic_hash": ""
-  },
-  "src/components/ui/select.tsx": {
-    "mtime": 1783603204.132499,
-    "ast_hash": "d5f91385646c1ce447cd4514fd9e62d4",
-    "semantic_hash": "d5f91385646c1ce447cd4514fd9e62d4"
-  },
-  "src/components/ui/skeleton.tsx": {
-    "mtime": 1783603204.142507,
-    "ast_hash": "df56d9f84fafbfbf3140887d291804c9",
-    "semantic_hash": "df56d9f84fafbfbf3140887d291804c9"
-  },
-  "src/components/ui/slot.tsx": {
-    "mtime": 1783603204.1570375,
-    "ast_hash": "e30de1d2908dc09c926d74472df87a45",
-    "semantic_hash": "e30de1d2908dc09c926d74472df87a45"
-  },
-  "src/components/weather/favorite-button.tsx": {
-    "mtime": 1783618950.0882566,
-    "ast_hash": "42bf8bdc6cae3aef4027f4d6ec928c5e",
-    "semantic_hash": ""
-  },
-  "src/components/weather/weather-icon.tsx": {
-    "mtime": 1783618955.8135974,
-    "ast_hash": "f95b9f36e75122311da80b6d184ec7b3",
-    "semantic_hash": ""
-  },
-  "src/components/widgets/registry.tsx": {
-    "mtime": 1783618732.3987896,
-    "ast_hash": "e51c5ba9b4d0ff76a471feb719be7a43",
-    "semantic_hash": ""
-  },
-  "src/components/widgets/sun-arc.tsx": {
-    "mtime": 1783618725.855824,
-    "ast_hash": "7ff93ef253fc72560b81d24d0a1ef335",
-    "semantic_hash": ""
-  },
-  "src/components/widgets/widget-board.tsx": {
-    "mtime": 1783618742.8785026,
-    "ast_hash": "afb78f78d3abf24735278eb35ebb91b5",
-    "semantic_hash": ""
-  },
-  "src/components/widgets/widget-shell.tsx": {
-    "mtime": 1783603204.385285,
-    "ast_hash": "45e0329447d0c98981b2c44e3937a804",
-    "semantic_hash": "45e0329447d0c98981b2c44e3937a804"
-  },
-  "src/components/widgets/wind-compass.tsx": {
-    "mtime": 1783603204.4035926,
-    "ast_hash": "7ea3aca24e3253b87a1d0f6a257ef35b",
-    "semantic_hash": "7ea3aca24e3253b87a1d0f6a257ef35b"
-  },
-  "src/lib/actions.ts": {
-    "mtime": 1783625371.6107936,
-    "ast_hash": "078f4c2cc57bf31d7f770d962308717e",
-    "semantic_hash": ""
-  },
-  "src/lib/cities.ts": {
-    "mtime": 1783626798.834382,
-    "ast_hash": "277069410b41f0ada94d5f660c56f126",
-    "semantic_hash": ""
-  },
-  "src/lib/continents.ts": {
-    "mtime": 1783603204.540907,
-    "ast_hash": "631abbf1627d525dd2663ead37508082",
-    "semantic_hash": "631abbf1627d525dd2663ead37508082"
-  },
-  "src/lib/geocoding.ts": {
-    "mtime": 1783603204.5639026,
-    "ast_hash": "5ae0585871069c4d671441e6076a08b7",
-    "semantic_hash": "5ae0585871069c4d671441e6076a08b7"
-  },
-  "src/lib/moon.ts": {
-    "mtime": 1783603204.5769024,
-    "ast_hash": "313886c98b11f1dc2ceb9f024909928d",
-    "semantic_hash": "313886c98b11f1dc2ceb9f024909928d"
-  },
-  "src/lib/open-meteo.ts": {
-    "mtime": 1783603302.8661954,
-    "ast_hash": "5365552a4b5c78eac726fe644d8e0d26",
-    "semantic_hash": "5365552a4b5c78eac726fe644d8e0d26"
-  },
-  "src/lib/seo.ts": {
-    "mtime": 1783617402.0102746,
-    "ast_hash": "b7bb97bc33a8c8000c4d36d61e8af2ca",
-    "semantic_hash": "b7bb97bc33a8c8000c4d36d61e8af2ca"
-  },
-  "src/lib/timezones.ts": {
-    "mtime": 1783603204.7149782,
-    "ast_hash": "71fb19311c61ad584c5f11026780cdcd",
-    "semantic_hash": "71fb19311c61ad584c5f11026780cdcd"
-  },
-  "src/lib/types.ts": {
-    "mtime": 1783603204.745222,
-    "ast_hash": "16d2c2f17f501aac9716ec964510f299",
-    "semantic_hash": "16d2c2f17f501aac9716ec964510f299"
-  },
-  "src/lib/utils.ts": {
-    "mtime": 1783603204.7707636,
-    "ast_hash": "10aa44ff4929958d83c433b043782168",
-    "semantic_hash": "10aa44ff4929958d83c433b043782168"
-  },
-  "src/lib/weather-codes.ts": {
-    "mtime": 1783603204.826179,
-    "ast_hash": "05f318bb8f536af6b28d759f850a3f63",
-    "semantic_hash": "05f318bb8f536af6b28d759f850a3f63"
-  },
-  "src/store/cities-view-store.ts": {
-    "mtime": 1783617748.2668543,
-    "ast_hash": "9229593d64f43bfe95974cf6fe666573",
-    "semantic_hash": "9229593d64f43bfe95974cf6fe666573"
-  },
-  "src/store/custom-cities-store.ts": {
-    "mtime": 1783603204.8627677,
-    "ast_hash": "d9fc749f2ee940db6138629728a32356",
-    "semantic_hash": "d9fc749f2ee940db6138629728a32356"
-  },
-  "src/store/favorites-store.ts": {
-    "mtime": 1783603204.9142988,
-    "ast_hash": "e34b1c5b051830e10b3fa80a6a737291",
-    "semantic_hash": "e34b1c5b051830e10b3fa80a6a737291"
-  },
-  "src/store/layout-store.ts": {
-    "mtime": 1783603204.9483008,
-    "ast_hash": "f51a73c62f18f5c19c30f5a4a408181b",
-    "semantic_hash": "f51a73c62f18f5c19c30f5a4a408181b"
-  },
-  "src/store/mobile-menu.ts": {
-    "mtime": 1783613657.734928,
-    "ast_hash": "1957e9ad7cb6c0116fee6ee497df16d9",
-    "semantic_hash": "1957e9ad7cb6c0116fee6ee497df16d9"
-  },
-  "src/store/theme-store.ts": {
-    "mtime": 1783626465.6434329,
-    "ast_hash": "1fae1bc13431f12c22ecc9272ded4927",
-    "semantic_hash": ""
-  },
-  "tsconfig.json": {
-    "mtime": 1783603204.9773016,
-    "ast_hash": "db83238185747ad766a69e69ba0c86a0",
-    "semantic_hash": "db83238185747ad766a69e69ba0c86a0"
   },
   "app/compare/page.tsx": {
     "mtime": 1783625538.7836378,
     "ast_hash": "611430695e29dddc843446918913a828",
     "semantic_hash": ""
   },
+  "app/icon-192/route.tsx": {
+    "mtime": 1783629182.3536077,
+    "ast_hash": "a84c1bb57f58ce0f1a475c1ea9cb7f01",
+    "semantic_hash": ""
+  },
+  "app/icon-512-maskable/route.tsx": {
+    "mtime": 1783629182.3546128,
+    "ast_hash": "a2dc4301e71c0122e2a20f0d07c615da",
+    "semantic_hash": ""
+  },
+  "app/icon-512/route.tsx": {
+    "mtime": 1783629182.3556092,
+    "ast_hash": "43c22ab99c6ae4584f6e976f33f9b52b",
+    "semantic_hash": ""
+  },
+  "app/icon.tsx": {
+    "mtime": 1783629182.3566117,
+    "ast_hash": "6ee66a825a6af8614a34926e3204e486",
+    "semantic_hash": ""
+  },
+  "app/layout.tsx": {
+    "mtime": 1783602633.485838,
+    "ast_hash": "1fb39216aea7bf8aaae3fb8689620461",
+    "semantic_hash": ""
+  },
+  "app/manifest.ts": {
+    "mtime": 1783629182.3596163,
+    "ast_hash": "daa9539ec9fd4c6d6848ca30f7a384c3",
+    "semantic_hash": ""
+  },
+  "app/page.tsx": {
+    "mtime": 1783602627.8278825,
+    "ast_hash": "372f2dffad69adda083b803e7b15cea0",
+    "semantic_hash": ""
+  },
+  "app/robots.ts": {
+    "mtime": 1783617412.4757974,
+    "ast_hash": "f4a24ceebe062ab93a284dc8b7685419",
+    "semantic_hash": ""
+  },
+  "app/sitemap.ts": {
+    "mtime": 1783617420.0346153,
+    "ast_hash": "912f192956a3600fa37695a82530ed8a",
+    "semantic_hash": ""
+  },
+  "eslint.config.mjs": {
+    "mtime": 1783603382.05524,
+    "ast_hash": "d274b6390dc5b46236e0afed7f67927c",
+    "semantic_hash": ""
+  },
+  "next.config.ts": {
+    "mtime": 1783603203.1899014,
+    "ast_hash": "746068bd774ad70e6dbf310ed415edde",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1783608557.1543276,
+    "ast_hash": "0ecebd9a301a8741e9fef002a40d0a33",
+    "semantic_hash": ""
+  },
+  "postcss.config.mjs": {
+    "mtime": 1783603203.259431,
+    "ast_hash": "e1728aee6523e793c4610f881120d2c7",
+    "semantic_hash": ""
+  },
+  "src/components/charts/chart-primitives.tsx": {
+    "mtime": 1783603729.640837,
+    "ast_hash": "844e1d8ebe7b6ce03dee4e5de4a527ca",
+    "semantic_hash": ""
+  },
+  "src/components/charts/precipitation-chart.tsx": {
+    "mtime": 1783602680.2506454,
+    "ast_hash": "1530c5121c4a481c452a336c04c7c22d",
+    "semantic_hash": ""
+  },
+  "src/components/charts/temperature-chart.tsx": {
+    "mtime": 1783603203.5597312,
+    "ast_hash": "0b3941c93d79161250dcee7ec48d280d",
+    "semantic_hash": ""
+  },
+  "src/components/charts/weekly-chart.tsx": {
+    "mtime": 1783603203.582122,
+    "ast_hash": "4cae23ef055ebeafb531fa00e0b2bb6c",
+    "semantic_hash": ""
+  },
+  "src/components/charts/wind-chart.tsx": {
+    "mtime": 1783602702.0465527,
+    "ast_hash": "306323afe05f1d9faf698c91cab7e244",
+    "semantic_hash": ""
+  },
+  "src/components/cities/add-location-panel.tsx": {
+    "mtime": 1783603203.7001834,
+    "ast_hash": "da6c820ed0cc4b11eae0d7b37b2b4a61",
+    "semantic_hash": ""
+  },
+  "src/components/cities/cities-view.tsx": {
+    "mtime": 1783603203.802744,
+    "ast_hash": "9a55911114d84208dcd11418b4b91913",
+    "semantic_hash": ""
+  },
+  "src/components/cities/city-card.tsx": {
+    "mtime": 1783603203.829741,
+    "ast_hash": "6cdfffd205ae2936b8597988aead93d5",
+    "semantic_hash": ""
+  },
+  "src/components/cities/compact-city-card.tsx": {
+    "mtime": 1783617775.4858222,
+    "ast_hash": "24367bc1cb4ba07fe3aab244bb993a19",
+    "semantic_hash": ""
+  },
+  "src/components/cities/view-selector.tsx": {
+    "mtime": 1783617761.627625,
+    "ast_hash": "4dfe441c768580cd5d51cd3208ea58d9",
+    "semantic_hash": ""
+  },
+  "src/components/city/charts-section.tsx": {
+    "mtime": 1783609325.5929866,
+    "ast_hash": "2d790b8c073113e35f8faf2e7a77d896",
+    "semantic_hash": ""
+  },
+  "src/components/city/city-detail.tsx": {
+    "mtime": 1783609075.729262,
+    "ast_hash": "340ac973730c1a90bdf44b49c8d9a303",
+    "semantic_hash": ""
+  },
+  "src/components/city/city-header.tsx": {
+    "mtime": 1783603203.8987534,
+    "ast_hash": "355ee769fc040e2b395651599d337076",
+    "semantic_hash": ""
+  },
+  "src/components/city/daily-forecast.tsx": {
+    "mtime": 1783604659.4543748,
+    "ast_hash": "e03b06c3b4cf582c3c207c96cce78793",
+    "semantic_hash": ""
+  },
+  "src/components/city/hourly-forecast.tsx": {
+    "mtime": 1783609034.5480902,
+    "ast_hash": "15b90c4d23c37a73763fcaac25aa68a0",
+    "semantic_hash": ""
+  },
   "src/components/compare/city-search-modal.tsx": {
-    "mtime": 1783626717.8467045,
-    "ast_hash": "1ab0fa89d0989cb7fa6f37a78cfef39a",
+    "mtime": 1783625417.3575597,
+    "ast_hash": "46ef9d2a5cbd2ed2b971909caf00b35c",
     "semantic_hash": ""
   },
   "src/components/compare/compare-view.tsx": {
-    "mtime": 1783626717.8477058,
-    "ast_hash": "74364d528dd3eb5c015b0ab0a5f20758",
+    "mtime": 1783625582.7663145,
+    "ast_hash": "db734eca8dc5b05bd5056eba2b67cc7e",
     "semantic_hash": ""
   },
   "src/components/compare/comparison-analytics.tsx": {
@@ -379,8 +209,223 @@
     "ast_hash": "c4e2b6bde38366cc352ecf94d81c41ef",
     "semantic_hash": ""
   },
+  "src/components/glass/glass-card.tsx": {
+    "mtime": 1783604822.224438,
+    "ast_hash": "29284ca0772f1d86b4cffd842435854b",
+    "semantic_hash": ""
+  },
+  "src/components/landing/hero-preview.tsx": {
+    "mtime": 1783604735.1216407,
+    "ast_hash": "189f4d1cdf51df539fb1323d7e169ffa",
+    "semantic_hash": ""
+  },
+  "src/components/layout/favorites-menu.tsx": {
+    "mtime": 1783603204.0285187,
+    "ast_hash": "36555feaadc4f5750301939ce1abe549",
+    "semantic_hash": ""
+  },
+  "src/components/layout/footer.tsx": {
+    "mtime": 1783604732.677187,
+    "ast_hash": "41bd8ce712653323f0998d0013d5e1b9",
+    "semantic_hash": ""
+  },
+  "src/components/layout/navbar.tsx": {
+    "mtime": 1783605541.3687232,
+    "ast_hash": "034b2553c01c425e5fa234628a3f1ba1",
+    "semantic_hash": ""
+  },
+  "src/components/layout/theme-selector.tsx": {
+    "mtime": 1783614221.7412448,
+    "ast_hash": "016539356ca33bc5a6e177ea1632a82d",
+    "semantic_hash": ""
+  },
+  "src/components/mobile-menu.tsx": {
+    "mtime": 1783613880.6357641,
+    "ast_hash": "6399b826e00f536b0d9c5a584f12aac6",
+    "semantic_hash": ""
+  },
+  "src/components/ui/badge.tsx": {
+    "mtime": 1783603204.0725203,
+    "ast_hash": "a0a4ff523af3608e5073ec1bc2b466dd",
+    "semantic_hash": ""
+  },
+  "src/components/ui/button.tsx": {
+    "mtime": 1783603204.087911,
+    "ast_hash": "e05fe708338ec418fae8747ebc06e55a",
+    "semantic_hash": ""
+  },
+  "src/components/ui/close.tsx": {
+    "mtime": 1772910957.8772452,
+    "ast_hash": "0d91c89c435027e1e3d2bda6d091bbb7",
+    "semantic_hash": ""
+  },
+  "src/components/ui/flag-avatar.tsx": {
+    "mtime": 1783626961.889745,
+    "ast_hash": "6b8b8d67ce8d584f140801ed0774ca87",
+    "semantic_hash": ""
+  },
+  "src/components/ui/index.ts": {
+    "mtime": 1783613746.0151486,
+    "ast_hash": "3eddd9fd666e8af02a0dc1f4887a40de",
+    "semantic_hash": ""
+  },
+  "src/components/ui/search-input.tsx": {
+    "mtime": 1783615789.3422892,
+    "ast_hash": "23f84138c9ca0d7f7bcf51c499472176",
+    "semantic_hash": ""
+  },
+  "src/components/ui/select.tsx": {
+    "mtime": 1783603204.132499,
+    "ast_hash": "d5f91385646c1ce447cd4514fd9e62d4",
+    "semantic_hash": ""
+  },
+  "src/components/ui/skeleton.tsx": {
+    "mtime": 1783603204.142507,
+    "ast_hash": "df56d9f84fafbfbf3140887d291804c9",
+    "semantic_hash": ""
+  },
+  "src/components/ui/slot.tsx": {
+    "mtime": 1783603204.1570375,
+    "ast_hash": "e30de1d2908dc09c926d74472df87a45",
+    "semantic_hash": ""
+  },
+  "src/components/weather/favorite-button.tsx": {
+    "mtime": 1783603302.8571968,
+    "ast_hash": "618603772a65362fbfebbc2eb6a1149e",
+    "semantic_hash": ""
+  },
+  "src/components/weather/heart-burst.tsx": {
+    "mtime": 1783668658.9231164,
+    "ast_hash": "e504e483ca4b058d04b4803f7144c920",
+    "semantic_hash": ""
+  },
+  "src/components/weather/weather-icon.tsx": {
+    "mtime": 1783603204.1996903,
+    "ast_hash": "939976fce8babe4f46868068a4734c03",
+    "semantic_hash": ""
+  },
+  "src/components/widgets/registry.tsx": {
+    "mtime": 1783603204.2762148,
+    "ast_hash": "fe7118f0c96f4156869b5ecb896c366e",
+    "semantic_hash": ""
+  },
+  "src/components/widgets/sun-arc.tsx": {
+    "mtime": 1783603204.2972288,
+    "ast_hash": "a307f4cd06276cfd14fbad8335b2ab4f",
+    "semantic_hash": ""
+  },
+  "src/components/widgets/widget-board.tsx": {
+    "mtime": 1783603302.8621974,
+    "ast_hash": "66088651cb995e99fbc4f6f028240f49",
+    "semantic_hash": ""
+  },
+  "src/components/widgets/widget-shell.tsx": {
+    "mtime": 1783603204.385285,
+    "ast_hash": "45e0329447d0c98981b2c44e3937a804",
+    "semantic_hash": ""
+  },
+  "src/components/widgets/wind-compass.tsx": {
+    "mtime": 1783603204.4035926,
+    "ast_hash": "7ea3aca24e3253b87a1d0f6a257ef35b",
+    "semantic_hash": ""
+  },
+  "src/lib/actions.ts": {
+    "mtime": 1783603204.4215894,
+    "ast_hash": "8943e3fc5339c9335741ae241993dae9",
+    "semantic_hash": ""
+  },
+  "src/lib/app-icon.tsx": {
+    "mtime": 1783629182.3606172,
+    "ast_hash": "42a490090568e866066fb7b34693039c",
+    "semantic_hash": ""
+  },
+  "src/lib/cities.ts": {
+    "mtime": 1783603204.5171342,
+    "ast_hash": "6ecea92951144d06e1034516232ea221",
+    "semantic_hash": ""
+  },
+  "src/lib/continents.ts": {
+    "mtime": 1783603204.540907,
+    "ast_hash": "631abbf1627d525dd2663ead37508082",
+    "semantic_hash": ""
+  },
+  "src/lib/geocoding.ts": {
+    "mtime": 1783603204.5639026,
+    "ast_hash": "5ae0585871069c4d671441e6076a08b7",
+    "semantic_hash": ""
+  },
+  "src/lib/moon.ts": {
+    "mtime": 1783603204.5769024,
+    "ast_hash": "313886c98b11f1dc2ceb9f024909928d",
+    "semantic_hash": ""
+  },
+  "src/lib/open-meteo.ts": {
+    "mtime": 1783603302.8661954,
+    "ast_hash": "5365552a4b5c78eac726fe644d8e0d26",
+    "semantic_hash": ""
+  },
+  "src/lib/seo.ts": {
+    "mtime": 1783617402.0102746,
+    "ast_hash": "b7bb97bc33a8c8000c4d36d61e8af2ca",
+    "semantic_hash": ""
+  },
+  "src/lib/timezones.ts": {
+    "mtime": 1783603204.7149782,
+    "ast_hash": "71fb19311c61ad584c5f11026780cdcd",
+    "semantic_hash": ""
+  },
+  "src/lib/types.ts": {
+    "mtime": 1783603204.745222,
+    "ast_hash": "16d2c2f17f501aac9716ec964510f299",
+    "semantic_hash": ""
+  },
+  "src/lib/utils.ts": {
+    "mtime": 1783603204.7707636,
+    "ast_hash": "10aa44ff4929958d83c433b043782168",
+    "semantic_hash": ""
+  },
+  "src/lib/weather-codes.ts": {
+    "mtime": 1783603204.826179,
+    "ast_hash": "05f318bb8f536af6b28d759f850a3f63",
+    "semantic_hash": ""
+  },
+  "src/store/cities-view-store.ts": {
+    "mtime": 1783617748.2668543,
+    "ast_hash": "9229593d64f43bfe95974cf6fe666573",
+    "semantic_hash": ""
+  },
+  "src/store/custom-cities-store.ts": {
+    "mtime": 1783603204.8627677,
+    "ast_hash": "d9fc749f2ee940db6138629728a32356",
+    "semantic_hash": ""
+  },
+  "src/store/favorites-store.ts": {
+    "mtime": 1783603204.9142988,
+    "ast_hash": "e34b1c5b051830e10b3fa80a6a737291",
+    "semantic_hash": ""
+  },
+  "src/store/layout-store.ts": {
+    "mtime": 1783603204.9483008,
+    "ast_hash": "f51a73c62f18f5c19c30f5a4a408181b",
+    "semantic_hash": ""
+  },
+  "src/store/mobile-menu.ts": {
+    "mtime": 1783613657.734928,
+    "ast_hash": "1957e9ad7cb6c0116fee6ee497df16d9",
+    "semantic_hash": ""
+  },
+  "src/store/theme-store.ts": {
+    "mtime": 1783614215.4971168,
+    "ast_hash": "41799e90f8b975383dd38a8504bbe91b",
+    "semantic_hash": ""
+  },
+  "tsconfig.json": {
+    "mtime": 1783603204.9773016,
+    "ast_hash": "db83238185747ad766a69e69ba0c86a0",
+    "semantic_hash": ""
+  },
   ".claude/CLAUDE.md": {
-    "mtime": 1783623993.3801343,
+    "mtime": 1783623993.0,
     "ast_hash": "9b31786b637be3c13978bec4c2330752",
     "semantic_hash": ""
   },
@@ -480,13 +525,13 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1783624912.112322,
-    "ast_hash": "f1c392e16108821592370d2775d6ab09",
+    "mtime": 1783623617.347591,
+    "ast_hash": "478dd28c8b9503e1f7935abe3210df8d",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1783624827.8550153,
-    "ast_hash": "aa89e820c1a1162e5bf91a526005e110",
+    "mtime": 1783623993.0,
+    "ast_hash": "99fd78ee7a5d8c147196c290d9baba6b",
     "semantic_hash": ""
   },
   "README.md": {
@@ -525,8 +570,8 @@
     "semantic_hash": ""
   },
   "public/icons/icon-intense-rain.png": {
-    "mtime": 1783611793.1485758,
-    "ast_hash": "664ea7e68544867372d03a620e90ecf9",
+    "mtime": 1783610365.3043294,
+    "ast_hash": "30c7f43ee833979d20b4bb2f41b4c03d",
     "semantic_hash": ""
   },
   "public/icons/icon-moon.png": {
@@ -535,8 +580,8 @@
     "semantic_hash": ""
   },
   "public/icons/icon-rain.png": {
-    "mtime": 1783611288.7570908,
-    "ast_hash": "f5e071647d903fe065d7964509c07c03",
+    "mtime": 1783610365.3043294,
+    "ast_hash": "938181f9d6a3ab8c451d07bb017dc894",
     "semantic_hash": ""
   },
   "public/icons/icon-sun.png": {
@@ -547,6 +592,11 @@
   "public/icons/icon-thunderstorm.png": {
     "mtime": 1783611195.8085775,
     "ast_hash": "9cf75ddf111b21fb27bdb573d025e782",
+    "semantic_hash": ""
+  },
+  "public/logo.svg": {
+    "mtime": 1783667116.8283699,
+    "ast_hash": "af49a50a953c5c0150f6b087ab74ba36",
     "semantic_hash": ""
   },
   "public/next.svg": {
@@ -567,11 +617,6 @@
   "public/window.svg": {
     "mtime": 1783601441.1977475,
     "ast_hash": "a2760511c65806022ad20adf74370ff3",
-    "semantic_hash": ""
-  },
-  "src/components/ui/flag-avatar.tsx": {
-    "mtime": 1783626961.889745,
-    "ast_hash": "6b8b8d67ce8d584f140801ed0774ca87",
     "semantic_hash": ""
   }
 }
