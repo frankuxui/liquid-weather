@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CloudSun } from "lucide-react";
 import { FavoritesMenu } from "./favorites-menu";
 import { ThemeSelector } from "./theme-selector";
 import { MobileMenu } from "@/components/mobile-menu";
@@ -22,12 +21,18 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 pt-[calc(env(safe-area-inset-top)+1rem)]">
       <div className="mx-auto max-w-7xl px-10">
-        <nav className="glass mx-auto flex max-w-7xl items-center justify-between rounded-full px-4 py-2.5 backdrop-blur-lg">
+        <nav className="glass mx-auto flex max-w-7xl items-center justify-between rounded-full px-2 py-2 backdrop-blur-lg">
           <Link href="/" className="flex items-center gap-2.5 font-semibold">
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-linear-to-br from-primary to-accent text-primary-foreground shadow-glass-sm">
-              <CloudSun size={20} strokeWidth={2} />
+            <span className="size-11 inline-flex items-center justify-center flex-none rounded-full bg-linear-to-br from-primary to-accent text-white shadow-glass-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-5" viewBox="0 0 15 9" fill="none">
+                <path d="M0 8.72727V0H1.84517V7.20597H5.58665V8.72727H0Z" fill="currentColor" />
+                <path
+                  d="M5.49716 8.72727L3 0H5.01562L6.46023 6.06392H6.53267L8.12642 0H9.85227L11.4418 6.0767H11.5185L12.9631 0H14.9787L12.4815 8.72727H10.6832L9.02131 3.02131H8.95313L7.29545 8.72727H5.49716Z"
+                  fill="currentColor"
+                />
+              </svg>
             </span>
-            <span className="text-gradient text-lg tracking-tight">Liquid Weather</span>
+            <span className="home-liquid-gradient text-lg tracking-tight">Liquid Weather</span>
           </Link>
 
           <div className="flex items-center gap-1">

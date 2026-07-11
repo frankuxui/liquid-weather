@@ -72,7 +72,7 @@ export function CompareView() {
       <CitySearchModal
         open={modalSide !== null}
         onOpenChange={(o) => !o && setModalSide(null)}
-        excludeSlug={modalSide ? otherCity(modalSide)?.slug ?? null : null}
+        excludeSlug={modalSide ? (otherCity(modalSide)?.slug ?? null) : null}
         onSelect={(city) => {
           if (modalSide) select(modalSide, city);
         }}
@@ -106,15 +106,17 @@ function CitySlot({
         type="button"
         onClick={onOpen}
         className={cn(
-          "group flex min-h-[200px] flex-col items-center justify-center gap-3 rounded-3xl border border-dashed border-white/15 bg-white/[0.03] p-6 text-center transition-colors",
+          "group flex min-h-50 flex-col items-center justify-center gap-3 rounded-3xl border-2 cursor-pointer border-dashed border-white/15 bg-white/3 p-6 text-center transition-colors",
           ring
         )}
       >
         <span className="grid h-14 w-14 place-items-center rounded-full bg-white/5 text-muted-foreground transition-colors group-hover:bg-primary/15 group-hover:text-primary">
           <Plus size={24} />
         </span>
-        <span className="text-sm font-medium text-foreground/80">{side === "a" ? "Primera ciudad" : "Segunda ciudad"}</span>
-        <span className="text-xs text-muted-foreground">Pulsa para buscar</span>
+        <div className="flex flex-col items-center gap-1">
+          <span className="text-base text-foreground/80">{side === "a" ? "Primera ciudad" : "Segunda ciudad"}</span>
+          <span className="text-xs text-muted-foreground">Pulsa para buscar</span>
+        </div>
       </button>
     );
   }
@@ -123,7 +125,7 @@ function CitySlot({
   const desc = weather ? describeWeather(weather.current.weatherCode) : null;
 
   return (
-    <GlassCard className="relative min-h-[200px] overflow-hidden p-5">
+    <GlassCard className="relative min-h-50 overflow-hidden p-5">
       {weather && (
         <div
           aria-hidden
