@@ -1,3 +1,5 @@
+[![Liquid Weather](https://liquid-weather-beta.vercel.app/og-image.jpg)](https://liquid-weather.vercel.app)
+
 # 🌤️ Liquid Weather
 
 Dashboard meteorológico profesional en tiempo real con una interfaz premium
